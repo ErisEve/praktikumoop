@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Oglasi IMI</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link type="text/css" th:href="@{/css/pocetnacss.css}" rel="stylesheet" />
+    <!--    <script type="text/javascript" th:src="@{/js/jsdeo.js}"></script>-->
+</head>
+
+<body>
+    <div class="navbar">
+        <a th:href="@{/OglasiImi}">Početna</a>
+        <div class="topnav-right">
+            <div th:switch="${type}">
+                <div th:case="'unregistered'">
+                    <a th:href="@{/OglasiImi/prijava}">Prijavite se</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                Registrujte se
+                <i class="fa fa-caret-down"></i>
+              </button>
+                        <div class="dropdown-content">
+                            <a th:href="@{/OglasiImi/registracijaKompanije}">Kao poslodavac</a
+                >
+                <a th:href="@{/OglasiImi/registracija}">Kao kandidat</a>
+                        </div>
+                    </div>
+                </div>
+                <div th:case="*">
+                    <a th:href="@{/OglasiImi/profileCandidate}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="header">
+        <h1>Pronađite posao</h1>
+
+        <!-- <form method="post" id="search" th:object="${kljucnarec}">
+        <div id="input">
+          <input
+            class="in"
+            type="text"
+            placeholder="kljucnarec"
+            th:field="*{selectedOptionKljucnaRec}"
+            name="selectedOptionKljucnaRec"
+            required
+          /> -->
+
+        <!--            <select class="in">-->
+        <!--                <option value="NONE">&#45;&#45;&#45;&#45;Oblast rada&#45;&#45;&#45;&#45;</option>-->
+        <!--                <option th:each="job : ${jobs}" th:text="${job.getCategory()}"  ></option>-->
+        <!--            </select>-->
+        <!--            <select class="in">-->
+        <!--                <option value="NONE">&#45;&#45;&#45;&#45;Kategorije&#45;&#45;&#45;&#45;</option>-->
+        <!--                <option th:each="job : ${jobs}" th:text="${job.getSubcategory()}" ></option>-->
+        <!--            </select>-->
+
+        <!-- <button id="b1" type="submit">
+            <a th:action="@{/success}" th:href="@{/success}">PRETRAZI</a>
+          </button>
+        </div>
+      </form>
+      -->
+
+        <form th:action="@{/filter}" method="get">
+            <input id="keyword" type="text" name="keyword" />
+            <button type="submit">Go</button>
+        </form>
+    </div>
+    <div id="container">
+        <div id="main">
+            <h1>Popularni poslodavci</h1>
+            <div class="row" th:each="emp:${emps}">
+                <div class="column">
+                    <div class="card">
+                        <h1>
+                            <a th:href="@{/OglasiImi/profileCompany}" th:text="${emp.getCompanyName()}"></a>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

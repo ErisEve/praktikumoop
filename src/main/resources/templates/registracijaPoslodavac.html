@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Registracija</title>
+  <link type="text/css" rel="stylesheet" th:href="@{/css/regPoscss.css}">
+</head>
+<body>
+<form method="post" action="/action_page.php" style="border:1px solid #ccc" th:object="${userForm}" th:action="@{/OglasiImi/registracijaKompanije}">
+  <div class="container">
+    <h1>Registrujte se</h1>
+    <p>Molimo popunite formu da kreirate nalog.</p>
+    <hr>
+    <label for="ime"><b>Ime kompanije</b></label>
+    <input type="text" th:field="*{companyName}" placeholder="Uneti ime kompanije" name="ime" required>
+    <label for="contact"><b>Kontakt</b></label>
+    <input type="text" th:field="*{contactNumber}" placeholder="Uneti broj telefona" name="contact" required>
+    <label for="email"><b>Email</b></label>
+    <input type="text" th:field="*{email}" placeholder="Uneti Email" name="email" required>
+    <label for="industry_branch"><b>Branša</b></label>
+    <input type="text" th:field="*{industryBranch}" placeholder="Uneti branšu" name="industry_branch" required>
+    <label for="weblink"><b>Website</b></label>
+    <input type="text" th:field="*{linkToWebsite}" placeholder="Uneti vebsajt" name="weblink" required>
+    <label for="pib"><b>Pib</b></label>
+    <input type="text" th:field="*{pib}" placeholder="Uneti pib" name="pib" required>
+    <label for="address"><b>Adresa</b></label>
+    <input type="text" th:field="*{address}" placeholder="Uneti adresu" name="address" required>
+    <label for="place"><b>Mesto</b></label>
+    <input type="text" th:field="*{place}" placeholder="Uneti mesto" name="place" required>
+    <label for="post_number"><b>Poštanski broj</b></label>
+    <input type="text" th:field="*{postNumber}" placeholder="Uneti poštanski broj" name="post_number" required>
+    <label for="country"><b>Zemlja</b></label>
+    <input type="text" th:field="*{country}" placeholder="Uneti korisni&ccaron;ko ime" name="country" required>
+    <label for="username"><b>Korisničko ime</b></label>
+    <input type="text" th:field="*{username}" placeholder="Uneti korisni&ccaron;ko ime" name="username" required>
+    <label for="psw"><b>Lozinka</b></label>
+    <input type="password" th:field="*{password}" placeholder="Uneti lozinku" name="psw" required>
+    <label for="psw-repeat"><b>Ponoviti lozinku</b></label>
+    <input type="password" placeholder="Ponoviti lozinku" name="psw-repeat" required>
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Zapamti me<br>
+    </label>
+    <label>
+      <input type="checkbox" th:field="*{emailme}" checked="checked" name="emailme" style="margin-bottom:15px"> Želim da primam obaveštenja na email
+    </label>
+    <div class="clearfix">
+      <button type="button" class="cancelbtn" ><a th:href="@{/OglasiImi}" style="
+                  text-decoration: none;     color: whitesmoke;">POČETNA STRANA</a></button>
+      <button type="submit" class="signupbtn"><a href="@{/OglasiImi/successful}" style="
+                  text-decoration: none;     color: whitesmoke;">Registruj se</a></button>
+    </div>
+  </div>
+</form>
+</body>
+</html>

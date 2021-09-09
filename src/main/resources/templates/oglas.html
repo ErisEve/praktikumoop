@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="${ad.getDescription()}"></title>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/oglasCSS.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" th:src="@{/js/jsdeo.js}"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <a th:href="@{/OglasiImi}">Početna</a>
+        <div class="topnav-right">
+            <div th:switch="${type}">
+                <div th:case="'unregistered'">
+                    <a th:href="@{/OglasiImi/prijava}">Prijavite se</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Registrujte se
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                        <div class="dropdown-content">
+                            <a th:href="@{/OglasiImi/registracijaKompanije}">Kao poslodavac</a>
+                            <a th:href="@{/OglasiImi/registracija}">Kao kandidat</a>
+                        </div>
+                    </div>
+                </div>
+                <div th:case="*"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="nazivOglasa"><span th:text="${ad.getDescription()}"></span></div>
+        <div id="Osnovno">
+            <div id="poslodavac"><a id="poslodavacLink" th:href="@{https://twitter.com/home}">poslodavac</a></div>
+            <div id="radnaPozicija">radna pozicija<span th:text="${ad.getJob()}"></span></div>
+            <div id="tipZap">
+                <img th:src="@{/images/torba.png}" style="width: 20px;height: 20px;"> Tip zaposlenja
+                <span th:text="${ad.getJob()}"></span>
+            </div>
+            <div id="datumPostavljeno" th:text="${ad.getDateOfPosting()}">
+                <img th:src="@{/images/unnamed.png}" style="width: 20px;height: 20px;"> Datum postavljanja
+                <span th:text="${ad.getDateOfPosting()}"></span>
+            </div>
+            <div id="datumIsteka" th:text="${ad.getDateDeadline()}">
+                <img th:src="@{/images/unnamed.png}" style="width: 20px;height: 20px;"> Datum isteka
+                <span th:text="${ad.getDateDeadline()}"></span>
+            </div>
+        </div>
+        <!--            <p id="tekstOglasa">Tekst oglasa</p>-->
+        <!--            <div id="opis"> </div>-->
+        <div id="konkurisi" th:switch="${type}">
+            <a th:case="'candidate'" th:href="@{/OglasiImi/poslovi/oglas/konkurisi}">
+                <input id="b1" type="submit" value="konkurisi" />
+            </a>
+            <div th:case="'employer'">
+                <input id="b1" type="submit" value="konkurisi" th:onclick="employerOpensAd()" />
+            </div>
+            <div th:case="*">
+                <input id="b1" type="submit" value="konkurisi" th:onclick="unregistered()" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

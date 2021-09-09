@@ -1,0 +1,36 @@
+package com.example.demo.ads;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class AdService {
+    private final AdRepository adRepository;
+
+    @Autowired
+    public AdService(AdRepository adRepository) {
+        this.adRepository = adRepository;
+    }
+
+    public List<Ad> getAds() {
+        return adRepository.findAll();
+    }
+
+    public List<Ad> getSpecifiedAds(String keyword) {
+        System.out.println(keyword);
+        return adRepository.findSpecifiedAds(keyword);
+    }
+
+    public void addNewAd(Ad ad) {
+        adRepository.save(ad);
+    }
+
+    public void deleteAd(Long id) {
+        boolean b = adRepository.existsById(id);
+        if (!b) {
+            throw new IllegalStateException("Ad with that id doesn't exist");
+        }
+        adRepository.deleteById(id);
+    }
+}

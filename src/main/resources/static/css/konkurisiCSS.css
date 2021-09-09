@@ -1,0 +1,202 @@
+body{
+    position: relative;
+    background-color:#d1cfcb;
+    
+}
+
+.container{
+    /*
+    position: relative;
+    left: 230px;
+    top: 30px;
+    background-color: white;
+    width: 70%;
+    height: 1200px;
+    */
+        
+    margin: auto;
+    width: 60%;
+    background-color: white;
+    padding: 10px;
+    -webkit-box-shadow: -1px 1px 5px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.75);
+    box-shadow: -1px -1px 3px 3px rgba(0,0,0,0.30);
+    
+}
+#prijavaPocetak,img{
+  width: 100%;
+  height: 300px;
+   opacity: 0.7;
+}
+
+#prijava{
+    position: relative;
+    top: -250px;
+    left: 10%;
+    font-size: 20px;
+    font-family: Tahoma,serif;
+    color: #ffffff;
+    
+    
+}
+
+#imeOglasa{
+    position: relative;
+    top: -230px;
+    left: 10%;
+    font-size: 50px;
+    font-family: Tahoma,serif;
+    color: #ffffff;
+   
+    
+}
+#poslodavac{
+    position: relative;
+    top: -210px;
+    left: 10%;
+    font-size: 20px;
+    font-family: Tahoma,serif;
+    color: #ffffff;
+    
+}
+
+#licniPodaci{
+    position: relative;
+    top: -310px;
+    left: 30px;
+    
+    
+}
+#podaciNaslov{
+    position: relative;
+    left: 40px;
+    font-size: 30px;
+    color: #454545;
+    
+}
+#hr1{
+    position: relative;
+    left: -50px;
+    width: 90%;
+    border-top: 1px dotted #454545;
+}
+#licniPodaci,form{
+    color: #454545;
+    font-weight:bold;
+    position: relative;
+    left: 30px;
+    font-size: 20px;
+   
+}
+#licniPodaci textarea{
+    
+    
+}
+#input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    
+    -webkit-appearance: none;
+    margin: 0; 
+}
+#input[type=number] {
+    -moz-appearance:textfield; 
+}
+
+input[type=text]:focus{
+  outline: 2px solid #475a6b;
+  background-color: #e3e1dc;
+}
+input[type=number]:focus{
+  outline: 2px solid #475a6b;
+  background-color: #e3e1dc;
+}
+input[type=email]:focus{
+  outline: 2px solid #475a6b;
+  background-color: #e3e1dc;
+}
+
+
+#dokumenti{
+    position: relative;
+    top: -250px;
+    left: 30px;
+    
+}
+
+#dokumentiNaslov{
+    position: relative;
+    left: 40px;
+    font-size: 30px;
+    color: #454545;
+    font-weight: bold;
+    
+}
+#hr2{
+    position: relative;
+    left: -50px;
+    width: 90%;
+    border-top: 1px dotted #454545;
+    
+}
+
+#inputDokumenti{
+    color: #454545;
+    font-weight:bold;
+    position: relative;
+    left: 0px;
+    font-size: 20px;
+   
+}
+#konkurisi{
+    position: relative;
+    top: -220px;
+    left: 70px;
+    
+}
+#status{
+    /*
+    position: relative;
+    left: 600px;
+    top: -150px;
+    width: 300px;
+    height: 20px;
+    text-align: center;
+        */
+            
+    margin: auto;
+    width: 300px;
+    margin-top:-200px;
+    padding: 10px;
+    
+   
+    
+}
+#status.success{
+    background-color: rgb(211,250,153);
+    animation: status 4s ease forwards;
+}
+#status.error{
+    background-color: rgb(250,129,92);
+    color: white;
+    animation: status 3s ease forwards;
+}
+
+@keyframes status{
+    
+    0%{
+        opacity:1;
+        pointer-events: all;
+    }
+      
+    90%{
+        opacity:1;
+        pointer-events: all;
+    }
+      
+    100%{
+        opacity:0;
+        pointer-events: none;
+    }
+}
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Lista poslova</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/listaposlovacss.css}" />
+</head>
+
+<body>
+    <div class="navbar">
+        <a th:href="@{/OglasiImi}">Početna</a>
+        <div class="topnav-right">
+            <div th:switch="${type}">
+                <div th:case="'unregistered'">
+                    <a th:href="@{/OglasiImi/prijava}">Prijavite se</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                Registrujte se
+                <i class="fa fa-caret-down"></i>
+              </button>
+                        <div class="dropdown-content">
+                            <a th:href="@{/OglasiImi/registracijaKompanije}">Kao poslodavac</a
+                >
+                <a th:href="@{/OglasiImi/registracija}">Kao kandidat</a>
+                        </div>
+                    </div>
+                </div>
+                <div th:case="*"></div>
+            </div>
+        </div>
+    </div>
+    <!--<div id="header">-->
+    <!--    <h1>Pronađite posao</h1>-->
+    <!--    <div id="search" th:action="@{/OglasiImi/poslovi}">-->
+    <!--        <div id="input">-->
+    <!--            <input id="kljucna1" class="in" type="text" placeholder="kljucnarec" th:value="*{selectedOptionKljucnaRec}">-->
+    <!--            <select class="in">-->
+    <!--                <option value="NONE">&#45;&#45;&#45;&#45;Oblast rada&#45;&#45;&#45;&#45;</option>-->
+    <!--                <option th:each="job : ${jobs}" th:text="${job.getCategory()}"  th:value="*{selectedOptionCategory}"></option>-->
+    <!--            </select>-->
+    <!--            <select class="in">-->
+    <!--                <option value="NONE">&#45;&#45;&#45;&#45;Kategorije&#45;&#45;&#45;&#45;</option>-->
+    <!--                <option th:each="job : ${jobs}" th:text="${job.getSubcategory()}" th:value="*{selectedOptionSubcategory}"></option>-->
+    <!--            </select>-->
+    <!--            <button id="b1"><a th:action="@{/OglasiImi/poslovi}" th:href="@{/OglasiImi/poslovi}" >PRETRAZI</a></button>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</div>-->
+    <div class="content">
+        <h2>Lista poslova</h2>
+        <div id="oglasi" th:each="ad : ${keyword}">
+
+            <p th:text="|/OglasiImi/poslovi/oglas/${ad.getId()}|"></p>
+            <p id="nazivPoslodavca">Naziv posodavca</p>
+            <div id="opisOglasa" style="
+            width: 99%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          "></div>
+            <br />
+            <div id="datumIsteka" th:text="${ad.getDateDeadline()}">
+                <img th:src="@{/images/unnamed.png}" style="width: 20px; height: 20px" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
