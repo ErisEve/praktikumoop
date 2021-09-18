@@ -13,4 +13,7 @@ import java.util.List;
 public interface AdRepository extends JpaRepository<Ad, Long> {
     @Query(value = "SELECT * FROM ad a WHERE a.description like %:keyword%", nativeQuery = true)
     List<Ad> findSpecifiedAds(@Param("keyword") String keyword);
+    Ad findAdById(long id);
+    List<Ad> findAdByEmpId(Long empId);
+    
 }

@@ -1,42 +1,81 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>TODO supply a title</title>
-        <link type="text/css" rel="stylesheet" th:href="@{/css/konkurisiCSS.css}">
-        
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        
-        <div class="container">
-            <!--Prvi deo-->
-            <img src="job.jpg">
-            
-            <div id="prijava">Prijava na konkurs</div>
-            
-            <div id="prijavaPocetak">
-                
+
+<head>
+    <title>TODO supply a title</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/konkurisiCSS.css}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <div class="container">
+        <!--Prvi deo-->
+        <div class="navbar">
+            <a th:href="@{/OglasiImi}">Početna</a>
+            <div class="topnav-right">
+                <div th:switch="${type}">
+                    <div th:case="'unregistered'">
+                        <a th:href="@{/OglasiImi/prijava}">Prijavite se</a>
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                    Registrujte se
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/OglasiImi/registracijaKompanije}">Kao poslodavac</a
+                    >
+                    <a th:href="@{/OglasiImi/registracija}">Kao kandidat</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:case="'candidate'">
+                        <a th:href="@{/OglasiImi/profileCandidate}" th:text="${currentUser.getUsername()}"></a>
+                        <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                    </div>
+                    <div th:case="'employer'">
+                        <a th:href="@{/OglasiImi/profileCompany}" th:text="${currentUser.getUsername()}"></a>
+                        <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                    </div>
+                    <div th:case="'admin'">
+                        <a th:href="@{/OglasiImi/AdmininstratorSpace}" th:text="${currentUser.getUsername()}"></a>
+                        <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="@{/images/job.jpg}">
+
+        <div id="prijava">Prijava na konkurs</div>
+
+        <div id="prijavaPocetak">
+
             <div id="imeOglasa">
                 Ime Oglasa
             </div>
             <div id="poslodavac">
                 Poslodavac
-                
+
             </div>
-                
-                </div>
-            
-             <!--Podaci-->
-            
-             <form action="https://formspree.io/f/mvodqnrq" method="POST" id="forma">
-             <div id="licniPodaci">
-             <p id="podaciNaslov">Lični podaci</p>
-             <hr id="hr1">
-                
-                   
-                    <label for="fname">Ime: </label><br>
+
+        </div>
+
+        <!--Podaci-->
+
+        <form action="https://formspree.io/f/mvodqnrq" method="POST" id="forma" th:object="${applicationForm}" th:action="|/OglasiImi/poslovi/oglas/konkurisi/${applicationForm.getIdAd()}|">
+            <div id="licniPodaci">
+                <p id="podaciNaslov">Lični podaci</p>
+                <hr id="hr1">
+                <label for="fname">Zasto sam ja dobar za ovaj posao: </label><br>
+                <input type="text" th:field="*{experience}" id="fname" required><br>
+                <label for="fname">Moja edukacija i dosadasnje iskustvo: </label><br>
+                <input type="text" th:field="*{education}" id="flastname" name="edkuacija" required><br>
+                <input type="hidden" th:field="*{idAd}">
+                <input type="hidden" th:field="*{idClient}">
+                <!-- <label for="fname">Ime: </label><br>
                     <input type="text" id="fname" name="Ime" required><br> 
                    
                     <label for="fname">Prezime: </label><br>
@@ -47,14 +86,14 @@
                     
                     <label for="fname">Broj telefona: </label><br>
                     <input type="tel" id="fnumber" name="Broj telefona" pattern="[0-9]{3}/[0-9]{3}-[0-9]{3,4}" placeholder="npr.011/012-345" required><br>
-                
+                 -->
             </div>
-             
-             
+
+            <!-- 
             <div id="dokumenti">
                 <p id="dokumentiNaslov">Dokumenti</p>
                 <hr id="hr2">
-               
+
                 <div id="inputDokumenti">
                     <label for="fbiografija">Vaša biografija (CV)</label><br>
                     <br><input id="biografija" type="file" accept=".jpg, .pdf, .doc." name="Biografija"> <br><br>
@@ -62,45 +101,46 @@
                     <br><input id="pismo" type="file" accept=".jpg, .pdf, .doc."> <br><br>
                     <label for="fdodatniDoc">Dodatni dokumenti </label><br>
                     <br><input type="file" id="dodatno" accept=".jpg, .pdf, .doc."> <br><br>
-           </div>
                 </div>
-            
-             
-             
-             
+            </div> -->
+
+
+
+
             <div id="konkurisi">
-                
+
                 <button type="submit" id="b1">KONKURIŠI</button>
-               
+
             </div>
-              </form>
-              
-        </div>
-        
-        <div id="status"></div>
-        <script>
-    var form = document.getElementById("forma");
-    
-    async function handleSubmit(event) {
-      event.preventDefault();
-      var status = document.getElementById("status");
-      var data = new FormData(event.target);
-      fetch(event.target.action, {
-        method: form.method,
-        body: data,
-        headers: {
-            'Accept': 'application/json'
+        </form>
+
+    </div>
+
+    <div id="status"></div>
+    <script>
+        var form = document.getElementById("forma");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            var status = document.getElementById("status");
+            var data = new FormData(event.target);
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                status.classList.add('success');
+                status.innerHTML = "Vaša prijava je uspešno prosleđena!";
+                form.reset()
+            }).catch(error => {
+                status.classList.add('error');
+                status.innerHTML = "Došlo je do greške!"
+            });
         }
-      }).then(response => {
-          status.classList.add('success');
-        status.innerHTML = "Vaša prijava je uspešno prosleđena!";
-        form.reset()
-      }).catch(error => {
-          status.classList.add('error');
-        status.innerHTML = "Došlo je do greške!"
-      });
-    }
-    form.addEventListener("submit", handleSubmit)
-</script>
-    </body>
+        form.addEventListener("submit", handleSubmit)
+    </script>
+</body>
+
 </html>

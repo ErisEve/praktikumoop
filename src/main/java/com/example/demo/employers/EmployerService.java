@@ -39,4 +39,7 @@ public class EmployerService extends UserService {
     public Employer findByUsername(CharSequence username) {
         return employerRepository.findByUsername(username);
     }
+    public Employer getEmployerById(Long id){
+        return employerRepository.getById(id);
+    }
 }

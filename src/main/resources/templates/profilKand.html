@@ -1,148 +1,168 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <title>Profil kandidata</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" th:href="@{https://www.w3schools.com/w3css/4/w3.css}">
-  <link rel="stylesheet" th:href="@{https://www.w3schools.com/lib/w3-theme-blue-grey.css}">
-  <link rel='stylesheet' th:href="@{https://fonts.googleapis.com/css?family=Open+Sans}">
-  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
-  <link type="text/css" href="@{/css/profilKandcss.css}" rel="stylesheet">
-  <style></style>
+    <title>Profil kandidata</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{https://www.w3schools.com/w3css/4/w3.css}">
+    <link rel="stylesheet" th:href="@{https://www.w3schools.com/lib/w3-theme-blue-grey.css}">
+    <link rel='stylesheet' th:href="@{https://fonts.googleapis.com/css?family=Open+Sans}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link type="text/css" href="@{/css/profilKandcss.css}" rel="stylesheet">
+    <style></style>
 </head>
+
 <body class="w3-theme-l5">
-<div class="navbar">
-  <a th:href="@{/OglasiImi}">Početna</a>
-  <div class="topnav-right">
-    <div th:switch="${type}">
-      <div th:case="'unregistered'">
-        <a th:href="@{/OglasiImi/prijava}">Prijavite se</a>
-        <div class="dropdown">
-          <button class="dropbtn">Registrujte se
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content">
-            <a th:href="@{/OglasiImi/registracijaKompanije}">Kao poslodavac</a>
-            <a th:href="@{/OglasiImi/registracija}">Kao kandidat</a>
-          </div>
-        </div>
-      </div>
-      <div th:case="*"></div>
-    </div>
-  </div>
-</div>
-<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
-  <div class="w3-row">
-    <div class="w3-col m3">
-      <div class="w3-card w3-round w3-white">
-        <div class="w3-container">
-          <h4 class="w3-center">Moj profil</h4>
-          <p class="w3-center"><img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-          <hr>
-          <p><i class="fa fa-user-circle-o fa-fw w3-margin-right w3-text-theme" th:text="${userForm.getFirstname()} +' '+ ${userForm.getLastname()}"></i></p>
-          <p><i class="fa fa-user-o fa-fw w3-margin-right w3-text-theme" th:text="${userForm.getUsername()}"></i></p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme" th:text="${userForm.getAddress()}"></i></p>
-          <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme" th:text="${userForm.getDateOfBirth()}"></i></p>
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-text-theme" th:text="${userForm.getTelephoneNumber()}"></i></p>
-          <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme" th:text="${userForm.getEmail()}"></i></p>
-        </div>
-      </div>
-      <br>
-      <div class="w3-card w3-round">
-        <div class="w3-white">
-          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
-          <div id="Demo1" class="w3-hide w3-container">
-            <p>Some text..</p>
-          </div>
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
-          <div id="Demo2" class="w3-hide w3-container">
-            <p>Some other text..</p>
-          </div>
-          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
-          <div id="Demo3" class="w3-hide w3-container">
-            <div class="w3-row-padding">
-              <br>
-              <div class="w3-half">
-                <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
-              </div>
-              <div class="w3-half">
-                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-              </div>
-              <div class="w3-half">
-                <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
-              </div>
-              <div class="w3-half">
-                <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
-              </div>
-              <div class="w3-half">
-                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-              </div>
-              <div class="w3-half">
-                <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">
-              </div>
+    <div class="navbar">
+        <a th:href="@{/OglasiImi}">Početna</a>
+        <div class="topnav-right">
+            <div th:switch="${type}">
+                <div th:case="'unregistered'">
+                    <a th:href="@{/OglasiImi/prijava}">Prijavite se</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                Registrujte se
+                <i class="fa fa-caret-down"></i>
+              </button>
+                        <div class="dropdown-content">
+                            <a th:href="@{/OglasiImi/registracijaKompanije}">Kao poslodavac</a
+                >
+                <a th:href="@{/OglasiImi/registracija}">Kao kandidat</a>
+                        </div>
+                    </div>
+                </div>
+                <div th:case="'candidate'">
+                    <a th:href="@{/OglasiImi/profileCandidate}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="'employer'">
+                    <a th:href="@{/OglasiImi/profileCompany}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="'admin'">
+                    <a th:href="@{/OglasiImi/AdmininstratorSpace}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <br>
-      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
-                  <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+    </div>
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+        <div class="w3-row">
+            <div class="w3-col m3">
+                <div class="w3-card w3-round w3-white">
+                    <div class="w3-container">
+                        <h4 class="w3-center">Moj profil</h4>
+                        <p class="w3-center"><img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                        <hr>
+                        <p><i class="fa fa-user-circle-o fa-fw w3-margin-right w3-text-theme" th:text="${userForm.getFirstname()} +' '+ ${userForm.getLastname()}"></i></p>
+                        <p><i class="fa fa-user-o fa-fw w3-margin-right w3-text-theme" th:text="${userForm.getUsername()}"></i></p>
+                        <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme" th:text="${userForm.getAddress()}"></i></p>
+                        <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme" th:text="${userForm.getDateOfBirth()}"></i></p>
+                        <p><i class="fa fa-phone fa-fw w3-margin-right w3-text-theme" th:text="${userForm.getTelephoneNumber()}"></i></p>
+                        <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme" th:text="${userForm.getEmail()}"></i></p>
+                    </div>
+                </div>
+                <br>
+                <div class="w3-card w3-round" th:switch="${canChange}">
+                    <div class="w3-white" th:case="yes">
+                        <button class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i><a th:href="@{/OglasiImi/changeInfo}">Change Account Info</a></button>
+                        <!-- <div id="Demo1" class="w3-hide w3-container">
+                            <p>Some text..</p>
+                        </div> -->
+                        <!-- <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
+                        <div id="Demo2" class="w3-hide w3-container">
+                            <p>Some other text..</p>
+                        </div>
+                        <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button> -->
+                        <!-- <div id="Demo3" class="w3-hide w3-container">
+                            <div class="w3-row-padding">
+                                <br>
+                                <div class="w3-half">
+                                    <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
+                                </div>
+                                <div class="w3-half">
+                                    <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+                                </div>
+                                <div class="w3-half">
+                                    <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
+                                </div>
+                                <div class="w3-half">
+                                    <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
+                                </div>
+                                <div class="w3-half">
+                                    <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+                                </div>
+                                <div class="w3-half">
+                                    <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div th:case="no"></div>
+                </div>
+                <br>
+                <!-- <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+                    <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
                   <i class="fa fa-remove"></i>
                   </span>
-        <p><strong>Zdravo!</strong></p>
-        <p>Imate novu ponudu za posao!</p>
-      </div>
-    </div>
-    <div class="w3-col m7">
-      <div class="w3-container w3-card w3-white w3-round w3-margin">
-        <br>
-        <h4>Radno iskustvo</h4>
-        <br>
-        <hr class="w3-clear">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
-<!--      <div class="w3-container w3-card w3-white w3-round w3-margin">-->
-<!--        <br>-->
-<!--        <p>Interesovanja</p>-->
-<!--        <p>-->
-<!--          <span class="w3-tag w3-small w3-theme-d2">Igre</span>-->
-<!--          <span class="w3-tag w3-small w3-theme-d1">Prijatelji</span>-->
-<!--          <span class="w3-tag w3-small w3-theme-l3">Dizajn</span>-->
-<!--          <span class="w3-tag w3-small w3-theme-l4">Umetnost</span>-->
-<!--          <span class="w3-tag w3-small w3-theme-l5">Fotografija</span>-->
-<!--        </p>-->
-<!--      </div>-->
-    </div>
-  </div>
-  <br>
-  <footer class="w3-container w3-theme-d3 w3-padding-16">
-    <h5></h5>
-  </footer>
-</div>
-<script>
-  // Accordion
-  function myFunction(id) {
-    var x = document.getElementById(id);
-    if (x.className.indexOf("w3-show") == -1) {
-      x.className += " w3-show";
-      x.previousElementSibling.className += " w3-theme-d1";
-    } else {
-      x.className = x.className.replace("w3-show", "");
-      x.previousElementSibling.className =
-              x.previousElementSibling.className.replace(" w3-theme-d1", "");
-    }
-  }
+                    <p><strong>Zdravo!</strong></p>
+                    <p>Imate novu ponudu za posao!</p>
+                </div> -->
+            </div>
+            <div class="w3-col m7">
+                <div class="w3-container w3-card w3-white w3-round w3-margin">
+                    <br>
+                    <h4>Radno iskustvo</h4>
+                    <br>
+                    <hr class="w3-clear">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
 
-  // Used to toggle the menu on smaller screens when clicking on the menu button
-  function openNav() {
-    var x = document.getElementById("navDemo");
-    if (x.className.indexOf("w3-show") == -1) {
-      x.className += " w3-show";
-    } else {
-      x.className = x.className.replace(" w3-show", "");
-    }
-  }
-</script>
+                <div th:switch="${type}">
+                    <div class="w3-container w3-card w3-white w3-round w3-margin" th:case="'candidate'">
+                        <div th:each="ap : ${applications}">
+                            <a th:href="|/OglasiImi/poslovi/oglas/${ap.getIdAd()}|">
+                                <p id="experience" th:text="${ap.getExperience()}"></p>
+                                <p id="education" th:text="${ap.getEducation()}"></p>
+                            </a>
+                        </div>
+                    </div>
+                    <div th:case="*"></div>
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <footer class="w3-container w3-theme-d3 w3-padding-16">
+            <h5></h5>
+        </footer>
+    </div>
+    <script>
+        // Accordion
+        function myFunction(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className += " w3-theme-d1";
+            } else {
+                x.className = x.className.replace("w3-show", "");
+                x.previousElementSibling.className =
+                    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+            }
+        }
+
+        // Used to toggle the menu on smaller screens when clicking on the menu button
+        function openNav() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
 </body>
+
 </html>

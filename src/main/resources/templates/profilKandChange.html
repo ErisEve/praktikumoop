@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Profil kandidata</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{https://www.w3schools.com/w3css/4/w3.css}">
+    <link rel="stylesheet" th:href="@{https://www.w3schools.com/lib/w3-theme-blue-grey.css}">
+    <link rel='stylesheet' th:href="@{https://fonts.googleapis.com/css?family=Open+Sans}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link type="text/css" href="@{/css/profilKandcss.css}" rel="stylesheet">
+    <style></style>
+</head>
+
+<body class="w3-theme-l5">
+    <div class="navbar">
+        <a th:href="@{/OglasiImi}">Početna</a>
+        <div class="topnav-right">
+            <div th:switch="${type}">
+                <div th:case="'unregistered'">
+                    <a th:href="@{/OglasiImi/prijava}">Prijavite se</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                Registrujte se
+                <i class="fa fa-caret-down"></i>
+              </button>
+                        <div class="dropdown-content">
+                            <a th:href="@{/OglasiImi/registracijaKompanije}">Kao poslodavac</a
+                >
+                <a th:href="@{/OglasiImi/registracija}">Kao kandidat</a>
+                        </div>
+                    </div>
+                </div>
+                <div th:case="'candidate'">
+                    <a th:href="@{/OglasiImi/profileCandidate}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="'employer'">
+                    <a th:href="@{/OglasiImi/profileCompany}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="'admin'">
+                    <a th:href="@{/OglasiImi/AdmininstratorSpace}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+        <div class="w3-row">
+            <div class="w3-col m3">
+                <div class="w3-card w3-round w3-white">
+                    <form class="w3-container" method="POST" th:object="${userForm}" action="#" th:action="@{/OglasiImi/changeInfo}">
+                        <h4 class="w3-center">Moj profil</h4>
+                        <p class="w3-center"><img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                        <hr>
+                        <label for="firstname"><b>Ime</b></label>
+                        <input type="text" th:field="*{firstname}" placeholder="Uneti ime" name="firstname">
+                        <label for="lastname"><b>Prezime</b></label>
+                        <input type="text" th:field="*{lastname}" placeholder="Uneti prezime" name="lastname">
+                        <label for="address"><b><br><br>Adresa</b></label>
+                        <input type="text" th:field="*{address}" placeholder="Uneti adresu" name="address">
+                        <label for="date_of_birth"><b>Datum rođenja</b></label>
+                        <input type="date" th:field="*{dateOfBirth}" name="date_ob_birth">
+                        <label for="telephone"><b>Broj telefona</b></label>
+                        <input type="text" th:field="*{telephoneNumber}" placeholder="Uneti broj telefona" name="telephone">
+                        <label for="email"><b>Email</b></label>
+                        <input type="text" th:field="*{email}" placeholder="Uneti Email" name="email">
+                        <button type="submit" class="changeInfoBtn">Promeni podatke</button>
+                    </form>
+                </div>
+                <br>
+            </div>
+
+        </div>
+        <br>
+        <footer class="w3-container w3-theme-d3 w3-padding-16">
+            <h5></h5>
+        </footer>
+    </div>
+    <script>
+        // Accordion
+        function myFunction(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className += " w3-theme-d1";
+            } else {
+                x.className = x.className.replace("w3-show", "");
+                x.previousElementSibling.className =
+                    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+            }
+        }
+
+        // Used to toggle the menu on smaller screens when clicking on the menu button
+        function openNav() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+</body>
+
+</html>

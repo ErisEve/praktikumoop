@@ -20,6 +20,7 @@ public class Candidate extends User {
     private boolean emailme;
     private String telephoneNumber;
     private String workingExperience;
+    public String type = "candidate";
 
     public Candidate() {
     }
@@ -50,7 +51,14 @@ public class Candidate extends User {
         this.telephoneNumber = telephoneNumber;
         this.workingExperience = workingExperience;
     }
-
+public Candidate(String firstname, String lastname, String address, String dateOfBirth, String telephoneNumber, String email) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.address = address;
+        this.telephoneNumber = telephoneNumber;
+        this.dateOfBirth = dateOfBirth;
+    }
     @Override
     public String toString() {
         return "Customer{" + "id=" + id + ", firstname='" + firstname + '\'' + ", lastname='" + lastname + '\''

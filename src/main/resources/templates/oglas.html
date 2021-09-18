@@ -17,23 +17,36 @@
                 <div th:case="'unregistered'">
                     <a th:href="@{/OglasiImi/prijava}">Prijavite se</a>
                     <div class="dropdown">
-                        <button class="dropbtn">Registrujte se
-                        <i class="fa fa-caret-down"></i>
-                    </button>
+                        <button class="dropbtn">
+                Registrujte se
+                <i class="fa fa-caret-down"></i>
+              </button>
                         <div class="dropdown-content">
-                            <a th:href="@{/OglasiImi/registracijaKompanije}">Kao poslodavac</a>
-                            <a th:href="@{/OglasiImi/registracija}">Kao kandidat</a>
+                            <a th:href="@{/OglasiImi/registracijaKompanije}">Kao poslodavac</a
+                >
+                <a th:href="@{/OglasiImi/registracija}">Kao kandidat</a>
                         </div>
                     </div>
                 </div>
-                <div th:case="*"></div>
+                <div th:case="'candidate'">
+                    <a th:href="@{/OglasiImi/profileCandidate}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="'employer'">
+                    <a th:href="@{/OglasiImi/profileCompany}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="'admin'">
+                    <a th:href="@{/OglasiImi/AdmininstratorSpace}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
             </div>
         </div>
     </div>
     <div class="container">
         <div id="nazivOglasa"><span th:text="${ad.getDescription()}"></span></div>
         <div id="Osnovno">
-            <div id="poslodavac"><a id="poslodavacLink" th:href="@{https://twitter.com/home}">poslodavac</a></div>
+            <div id="poslodavac"><a id="poslodavacLink" th:href="|/OglasiImi/poslodavac/${ad.getEmpId()}|">poslodavac</a></div>
             <div id="radnaPozicija">radna pozicija<span th:text="${ad.getJob()}"></span></div>
             <div id="tipZap">
                 <img th:src="@{/images/torba.png}" style="width: 20px;height: 20px;"> Tip zaposlenja
@@ -41,27 +54,82 @@
             </div>
             <div id="datumPostavljeno" th:text="${ad.getDateOfPosting()}">
                 <img th:src="@{/images/unnamed.png}" style="width: 20px;height: 20px;"> Datum postavljanja
-                <span th:text="${ad.getDateOfPosting()}"></span>
+                <span th:text="${ad.getDateOfPosting()}"></span><br>
             </div>
             <div id="datumIsteka" th:text="${ad.getDateDeadline()}">
                 <img th:src="@{/images/unnamed.png}" style="width: 20px;height: 20px;"> Datum isteka
                 <span th:text="${ad.getDateDeadline()}"></span>
             </div>
+            <span>Broj pregleda</span>
+            <span th:text="${ad.getViewCount()}"></span>
+            <span>Broj lajkova</span>
+            <span th:text="${ad.getLikeCount()}"></span>
         </div>
-        <!--            <p id="tekstOglasa">Tekst oglasa</p>-->
+        <!--            <p id="tekstOglasa">Tekst oglasa</p>
+        
+        |/OglasiImi/poslovi/oglas/${ad.getId()}|
+        -->
         <!--            <div id="opis"> </div>-->
         <div id="konkurisi" th:switch="${type}">
-            <a th:case="'candidate'" th:href="@{/OglasiImi/poslovi/oglas/konkurisi}">
+            <div th:case="candidate">
+                <a th:href="|/OglasiImi/poslovi/oglas/konkurisi/${ad.getId()}|">
+                    <input id="b1" type="submit" value="konkurisi" /></a>
+                <div th:switch="${isliked}">
+                    <div th:case="'not'">
+                        <form method="POST" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/liked|">
+                            <button id="hideme" type="submit">Like</button>
+                        </form>
+                    </div>
+                    <div th:case="'yes'"></div>
+                </div>
+            </div>
+            <div th:case="employer">
+
+            </div>
+            <a th:case="*" th:href="@{/OglasiImi/prijava}">
                 <input id="b1" type="submit" value="konkurisi" />
             </a>
-            <div th:case="'employer'">
-                <input id="b1" type="submit" value="konkurisi" th:onclick="employerOpensAd()" />
+
+        </div>
+        <!--Section for applications-->
+
+        <!--Comment section-->
+        <div>
+            <div>
+                <form th:object="${newCom}" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/comment|" method="POST">
+                    <textarea id="komentar" name="komentar" rows="4" cols="50" th:field="*{comm}"></textarea>
+                    <input type="hidden" th:field="*{idCandidate}">
+                    <input type="hidden" th:field="*{idEmployer}">
+                    <button id="idk" type="submit">Postavi komentar</button>
+                </form>
             </div>
-            <div th:case="*">
-                <input id="b1" type="submit" value="konkurisi" th:onclick="unregistered()" />
+            <div>
+                <div th:each="com : ${coms}">
+                    <p th:text="${com.getComm()}"></p>
+                    <button id="reply" onclick="toggleText()">Reply</button>
+                    <div style="display: none;" id="thisid">
+                        <form th:object="${newCom}" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/comment|" method="POST">
+                            <textarea id="komentar" name="komentar" rows="4" cols="50" th:field="*{comm}"></textarea>
+                            <input type="hidden" th:field="*{idCandidate}">
+                            <input type="hidden" th:field="*{idEmployer}">
+                            <input type="hidden" th:field="*{idAd}">
+                            <button id="idk" type="submit">Postavi komentar</button>
+                        </form>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
+        <script>
+            function toggleText() {
+                var x = document.getElementById("thisid");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
 </body>
 
 </html>

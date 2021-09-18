@@ -17,12 +17,22 @@ public class AdService {
         return adRepository.findAll();
     }
 
+    public Ad getAdById(Long id){
+        return adRepository.findAdById(id);
+    }
+    public List<Ad> findAdByEmpId(Long id){
+        return adRepository.findAdByEmpId(id);
+    }
     public List<Ad> getSpecifiedAds(String keyword) {
         System.out.println(keyword);
         return adRepository.findSpecifiedAds(keyword);
     }
 
     public void addNewAd(Ad ad) {
+        adRepository.save(ad);
+    }
+
+    public void updateAd(Ad ad){
         adRepository.save(ad);
     }
 

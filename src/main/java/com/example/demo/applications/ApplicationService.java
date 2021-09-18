@@ -16,6 +16,9 @@ public class ApplicationService {
     public List<Application> getApplications() {
         return applicationRepository.findAll();
     }
+    public List<Application> getApplicationsByCandidateId(Long id){
+        return applicationRepository.getByIdClient(id);
+    }
 
     public void addNewApplication(Application application) {
         applicationRepository.save(application);

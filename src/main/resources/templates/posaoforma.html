@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>TODO supply a title</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/posaoforma.css}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="navbar">
+        <a th:href="@{/OglasiImi}">Početna</a>
+        <div class="topnav-right">
+            <div th:switch="${type}">
+                <div th:case="'unregistered'">
+                    <a th:href="@{/OglasiImi/prijava}">Prijavite se</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                Registrujte se
+                <i class="fa fa-caret-down"></i>
+              </button>
+                        <div class="dropdown-content">
+                            <a th:href="@{/OglasiImi/registracijaKompanije}">Kao poslodavac</a
+                >
+                <a th:href="@{/OglasiImi/registracija}">Kao kandidat</a>
+                        </div>
+                    </div>
+                </div>
+                <div th:case="'candidate'">
+                    <a th:href="@{/OglasiImi/profileCandidate}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="'employer'">
+                    <a th:href="@{/OglasiImi/profileCompany}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="'admin'">
+                    <a th:href="@{/OglasiImi/AdmininstratorSpace}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <form id="podaciOglasa" action="" method="POST" th:object="${adForm}" th:action="@{/OglasiImi/postaviOglas}">
+        <div class="container">
+            <!--Prvi deo-->
+
+            <!--Podaci-->
+
+
+            <div id="podaciOglas">
+
+                <hr id="hr1">
+
+
+                <!-- <label for="fname">Ime: </label><br>
+                <input type="text" id="fname" name="Ime" required><br>
+
+                <label for="fcompanyname">Ime Vaše kompanije: </label><br>
+                <input type="text" id="fcompanyname" name="Ime Vase kompanije" required><br>
+
+
+
+                <label for="femail">E-mail: </label><br>
+                <input type="email" id="femail" name="E-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required><br>
+
+                <label for="fname">Broj telefona: </label><br>
+                <input type="tel" id="fnumber" name="Broj telefona" pattern="[0-9]{3}/[0-9]{3}-[0-9]{3,4}" placeholder="npr.011/012-345" required><br>
+
+                <label for="fpozicija">Radna pozicija: </label><br>
+                <input type="text" id="fpozicija" name="Radna pozicija" required><br> -->
+
+            </div>
+
+
+            <!-- <fieldset id="radnovreme1">
+                <legend>Radno vreme:</legend>
+                <input type="checkbox" name="radnovreme1" value="punoRadnoVreme">Puno radno vreme<br>
+                <input type="checkbox" name="radnovreme2" value="partTimePosao">Part-time posao
+            </fieldset> -->
+
+
+
+
+
+            <!-- 
+            <fieldset id="radnovreme2">
+                <legend>Smene:</legend>
+                <input type="checkbox" name="radnovreme1" value="8sati">8 sati<br>
+                <input type="checkbox" name="radnovreme2" value="10sati">10 sati<br>
+                <input type="checkbox" name="radnovreme3" value="12sati">12 sati<br>
+                <input type="checkbox" name="radnovreme4" value="prekovikenda">Preko vikenda<br>
+                <input type="checkbox" name="radnovreme5" value="ponpet">Od ponedeljka do petka<br>
+                <input type="checkbox" name="radnovreme6" value="praznici">Preko praznika<br>
+                <input type="checkbox" name="radnovreme7" value="nocnasmena">Noćna smena<br>
+                <input type="checkbox" name="radnovreme8" value="prekovremena">Preko vremena<br>
+                <input type="checkbox" name="radnovreme9" value="dnevnasmena">Dnevna smena
+            </fieldset> -->
+
+
+
+
+            <!-- <fieldset id="zarada">
+                <legend>Mogućnost dodatne zarade?</legend>
+                <input type="checkbox" name="zarada1" value="baksis">Bakšiš<br>
+                <input type="checkbox" name="zarada2" value="bonus">Bonus
+            </fieldset>
+ -->
+
+
+
+
+            <!--
+                        <label for="povoljnosti">Dodatne povoljnosti:</label>
+                        <input type="checkbox"  name="radnovreme1" value="8 sati">Zdravstveno osiguranje
+                        <input type="checkbox"  name="radnovreme2" value="10 sati">Zivotno osiguranje
+                        <input type="checkbox"  name="radnovreme3" value="10 sati">Penziono
+                        <input type="checkbox"  name="radnovreme4" value="10 sati">Placeni odmor
+                        <input type="checkbox"  name="radnovreme5" value="10 sati">Porodiljsko
+                        <input type="checkbox"  name="radnovreme6" value="10 sati">Popust za zaposlene
+                      -->
+
+            <!-- <fieldset id="povoljnosti">
+                <legend>Dodatne povoljnosti:</legend>
+                <input type="checkbox" name="povoljnosti" value="zdravstveno">Zdravstveno osiguranje<br>
+                <input type="checkbox" name="povoljnosti" value="zivotno">Životno osiguranje<br>
+                <input type="checkbox" name="povoljnosti" value="penzija">Penziono<br>
+                <input type="checkbox" name="povoljnosti" value="placenidomor">Plaćeni odmor<br>
+                <input type="checkbox" name="povoljnosti" value="porodiljsko">Porodiljsko<br>
+                <input type="checkbox" name="povoljnosti" value="popust">Popust za zaposlene<br>
+
+            </fieldset> -->
+
+
+            <div id="opisOglasa">
+                <label for="opisOglasa">Opis oglasa:</label><br>
+                <textarea id="opisoglasa" name="opisoglasa" rows="4" cols="50" th:field="*{description}"></textarea>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br><br>
+            <br><br>
+            <br>
+            <div>
+                <label for="datedeadline"><b>Datum isteka roka</b></label>
+                <input type="date" th:field="*{dateDeadline}" name="datedeadline" required>
+            </div>
+            <div>
+                <input type="checkbox" name="povoljnosti" value="zdravstveno" th:field="*{workFromHome}">rad od kuce<br>
+            </div>
+
+            <div>
+                <label for="job"><b>Posao</b></label>
+                <input type="text" th:field="*{job}" name="job" required>
+            </div>
+
+            <div id="postavi">
+
+                <button type="submit" id="b1">Postavi oglas!</button>
+
+            </div>
+
+
+
+
+
+        </div>
+
+    </form>
+
+
+
+
+
+
+
+</body>
+
+</html>

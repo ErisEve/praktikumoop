@@ -30,6 +30,7 @@ public class Employer extends User {
     private String password;
     private boolean emailme;
     private String linkToWebsite;
+    public String type = "employer";
 
     public Employer(String companyName, String place, String industryBranch, String contactNumber, String email, String postNumber, String country, String address, String pib, String username, String password, boolean emailme, String linkToWebsite) {
         this.companyName = companyName;

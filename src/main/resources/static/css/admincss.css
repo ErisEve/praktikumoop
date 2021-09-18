@@ -1,0 +1,177 @@
+#navbar
+{
+    width: 100%;
+    height: 50px;
+    background-color:skyblue;
+}
+#columns
+{
+    display: table;
+    width: 100%;
+    height: 500px;
+}
+#navleft
+{
+    margin-top: 10px;
+    width: 80px;
+    height: 100%;
+    border: 3px solid slateblue;
+    float: left;
+    padding: 0;
+}
+ul
+{
+    text-decoration: none;
+    margin: 0;
+   
+    width: 90%;
+    height: 90%;
+    
+    padding: 0;
+}
+li
+{
+    list-style: none;
+    width: 100px;
+    height: 50px;
+   
+    margin: 5px;
+}
+#main
+{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+#notifications
+{
+    margin-top: 10px;
+    width: 10%;
+    height: 100%;
+    border:3px solid slateblue;
+    float: right;
+   
+}
+h4
+{
+    margin: 5px;
+}
+#ncontent
+{
+    background-color:lightsteelblue;
+    width:140px;
+    margin: 5px;
+    height: 70px;
+    margin-top: 10px;
+}
+#candidate
+{
+    width: 1270px;
+    margin: 5px;
+    height: 70px;
+    background-color: skyblue;
+    margin-top: 10px;
+}
+h3
+{
+    width: 200px;
+    margin: 0px;
+    position: absolute;
+}
+#cinfo
+{
+    margin-top: 20px;
+    width: 1270px;
+    display: table;
+    position: absolute;
+    
+}
+
+#employer
+{
+    width: 1270px;
+    margin: 5px;
+    height: 70px;
+    background-color: skyblue;
+    margin-top: 10px;
+}
+#einfo
+{
+    margin-top: 20px;
+    width: 1270px;
+    display: table;
+    position: absolute;
+}
+
+#admin
+{
+    width: 1270px;
+    margin: 5px;
+    height: 70px;
+    background-color: skyblue;
+    margin-top: 10px;
+}
+#ainfo
+{
+    margin-top: 20px;
+    width: 1270px;
+    display: table;
+    position: absolute;
+}
+
+#ad
+{
+   width: 1270px;
+    margin: 5px;
+    height: 70px;
+    background-color: skyblue;
+    margin-top: 10px;
+}
+#adinfo
+{
+    margin-top: 20px;
+    width: 1270px;
+    display: table;
+    position: absolute;
+}
+
+#comment
+{
+    width: 1270px;
+    margin: 5px;
+    height: 70px;
+    background-color: skyblue;
+    margin-top: 10px;
+}
+#cominfo
+{
+    margin-top: 20px;
+    width: 1270px;
+    display: table;
+    position: absolute;
+}
+
+table
+{
+   
+   
+    position: relative;
+    width: 1270px;
+    height: 50px;
+}
+th
+{
+    width: 200px;
+    height: 10px;
+    margin: 5px;
+    padding: 0;
+  
+}
+td
+{
+   width: 200px;
+    height: 10px;
+    margin: 5px;
+    padding: 0; 
+}
+

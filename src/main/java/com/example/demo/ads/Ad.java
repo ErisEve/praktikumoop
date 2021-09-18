@@ -12,13 +12,14 @@ public class Ad {
     private Long id;
     private String description;
     private LocalDate dateOfPosting;
-    private LocalDate dateDeadline;
+    private String dateDeadline;
     private boolean workFromHome;
-    private int viewCount;
-    private int likeCount;
+    private int viewCount=0;
+    private int likeCount=0;
     private String job;
+    private Long empId;
 
-    public Ad(String description, LocalDate dateDeadline, boolean workFromHome, int viewCount, int likeCount,
+    public Ad(String description, String dateDeadline, boolean workFromHome, int viewCount, int likeCount,
             String job) {
         this.description = description;
         this.dateDeadline = dateDeadline;
@@ -27,12 +28,38 @@ public class Ad {
         this.likeCount = likeCount;
         this.job = job;
     }
+    public Ad(String description, String dateDeadline, boolean workFromHome, int viewCount, int likeCount,
+            String job, Long empId) {
+        this.description = description;
+        this.dateDeadline = dateDeadline;
+        this.workFromHome = workFromHome;
+        this.viewCount = viewCount;
+        this.likeCount = likeCount;
+        this.job = job;
+        this.empId = empId;
+    }
+    public Ad(String description, String dateDeadline, boolean workFromHome,
+            String job) {
+        this.description = description;
+        this.dateDeadline = dateDeadline;
+        this.workFromHome = workFromHome;
+        this.viewCount = 0;
+        this.likeCount = 0;
+        this.job = job;
+        // this.empId = empId;
+    }
+    public Ad(Long empId){
+        this.empId = empId;
+    }
 
     public Ad() {
     }
 
     public Long getId() {
         return id;
+    }
+    public Long getEmpId() {
+        return empId;
     }
 
     public String getDescription() {
@@ -43,7 +70,7 @@ public class Ad {
         return dateOfPosting;
     }
 
-    public LocalDate getDateDeadline() {
+    public String getDateDeadline() {
         return dateDeadline;
     }
 
@@ -66,7 +93,9 @@ public class Ad {
     public void setId(Long id) {
         this.id = id;
     }
-
+    public void setEmpId(Long id) {
+        this.empId = id;
+    }
     public void setDescription(String description) {
         this.description = description;
     }
@@ -75,7 +104,7 @@ public class Ad {
         this.dateOfPosting = dateOfPosting;
     }
 
-    public void setDateDeadline(LocalDate dateDeadline) {
+    public void setDateDeadline(String dateDeadline) {
         this.dateDeadline = dateDeadline;
     }
 
@@ -83,10 +112,12 @@ public class Ad {
         this.workFromHome = workFromHome;
     }
 
-    public void setViewCount(int viewCount) {
-        this.viewCount = viewCount;
+    public int incrementViewCount(){
+        return this.viewCount++;
     }
-
+    public int incrementLikeCount(){
+        return this.likeCount++;
+    }
     public void setLikeCount(int likeCount) {
         this.likeCount = likeCount;
     }

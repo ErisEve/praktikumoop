@@ -12,6 +12,7 @@ public class Administrator extends User {
     private Long id;
     private String username;
     private String password;
+    public String type = "admin";
 
     public Administrator(String username, String password) {
         this.username = username;

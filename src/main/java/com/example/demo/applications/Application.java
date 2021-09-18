@@ -7,20 +7,17 @@ import java.time.LocalDate;
 @Table
 public class Application {
     @Id
-    @SequenceGenerator(name = "application_sequence", sequenceName = "application_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "application_sequence")
-    private Long id;
-    private int idClient;
-    private int idJob;
+    // @SequenceGenerator(name = "application_sequence", sequenceName = "application_sequence", allocationSize = 1)
+    @GeneratedValue(strategy=GenerationType.AUTO) private Long id;
+    private Long idClient;
+    private Long idAd;
     private String experience;
     private String education;
     private LocalDate date;
 
-    public Application(int idClient, int idJob, String experience, String education) {
+    public Application(Long idClient, Long idAd) {
         this.idClient = idClient;
-        this.idJob = idJob;
-        this.education = education;
-        this.experience = experience;
+        this.idAd = idAd;
     }
     /*
      * Date date = new Date( ); SimpleDateFormat ft =new SimpleDateFormat
@@ -47,20 +44,20 @@ public class Application {
         this.id = id;
     }
 
-    public int getIdClient() {
+    public Long getIdClient() {
         return idClient;
     }
 
-    public void setIdClient(int idClient) {
+    public void setIdClient(Long idClient) {
         this.idClient = idClient;
     }
 
-    public int getIdJob() {
-        return idJob;
+    public Long getIdAd() {
+        return idAd;
     }
 
-    public void setIdJob(int idJob) {
-        this.idJob = idJob;
+    public void setIdAd(Long idAd) {
+        this.idAd = idAd;
     }
 
     public String getExperience() {
@@ -81,7 +78,7 @@ public class Application {
 
     @Override
     public String toString() {
-        return "Application{" + "id=" + id + ", idClient='" + idClient + '\'' + ", idJob='" + idJob + '\''
+        return "Application{" + "id=" + id + ", idClient='" + idClient + '\'' + ", idAd='" + idAd + '\''
                 + ", experience='" + experience + '\'' + ", education='" + education + '\'' + '}';
     }
 }

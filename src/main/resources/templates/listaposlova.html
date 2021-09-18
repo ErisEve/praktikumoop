@@ -27,7 +27,18 @@
                         </div>
                     </div>
                 </div>
-                <div th:case="*"></div>
+                <div th:case="'candidate'">
+                    <a th:href="@{/OglasiImi/profileCandidate}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="'employer'">
+                    <a th:href="@{/OglasiImi/profileCompany}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="'admin'">
+                    <a th:href="@{/OglasiImi/AdmininstratorSpace}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
             </div>
         </div>
     </div>
@@ -51,8 +62,10 @@
     <div class="content">
         <h2>Lista poslova</h2>
         <div id="oglasi" th:each="ad : ${keyword}">
-
-            <p th:text="|/OglasiImi/poslovi/oglas/${ad.getId()}|"></p>
+            <a th:href="|/OglasiImi/poslovi/oglas/${ad.getId()}|">
+                <p id="nazivOglasa" th:text="${ad.getDescription()}"></p>
+            </a>
+            <!-- <p th:text="|/OglasiImi/poslovi/oglas/${ad.getId()}|"></p> -->
             <p id="nazivPoslodavca">Naziv posodavca</p>
             <div id="opisOglasa" style="
             width: 99%;

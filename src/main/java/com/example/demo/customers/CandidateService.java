@@ -31,7 +31,9 @@ public class CandidateService extends UserService {
         }
         candidateRepository.save(candidate);
     }
-
+    public void updateCandidate(Candidate candidate){
+        candidateRepository.save(candidate);
+    }
     public void deleteCandidate(Long id) {
         boolean b = candidateRepository.existsById(id);
         if(!b){
@@ -43,5 +45,8 @@ public class CandidateService extends UserService {
     @Override
     public Object findByUsername(CharSequence username) {
         return candidateRepository.findByUsername(username);
+    }
+    public Candidate getCandidateById(Long id){
+        return candidateRepository.getById(id);
     }
 }

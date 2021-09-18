@@ -30,8 +30,16 @@
                         </div>
                     </div>
                 </div>
-                <div th:case="*">
+                <div th:case="candidate">
                     <a th:href="@{/OglasiImi/profileCandidate}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="employer">
+                    <a th:href="@{/OglasiImi/profileCompany}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="admin">
+                    <a th:href="@{/OglasiImi/AdmininstratorSpace}" th:text="${currentUser.getUsername()}"></a>
                     <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
                 </div>
             </div>
@@ -69,6 +77,7 @@
 
         <form th:action="@{/filter}" method="get">
             <input id="keyword" type="text" name="keyword" />
+            <input id="job" type="text" name="job" />
             <button type="submit">Go</button>
         </form>
     </div>
