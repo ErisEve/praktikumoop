@@ -19,6 +19,12 @@ public class Application {
         this.idClient = idClient;
         this.idAd = idAd;
     }
+    public Application(Long idClient, Long idAd, String experience, String education) {
+        this.idClient = idClient;
+        this.idAd = idAd;
+        this.experience = experience;
+        this.education = education;
+    }
     /*
      * Date date = new Date( ); SimpleDateFormat ft =new SimpleDateFormat
      * ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");

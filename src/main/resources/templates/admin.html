@@ -62,31 +62,35 @@
                 <table id="cinfo">
                     <tr>
                         <th>id</th>
+                        <th>username</th>
                         <th>firstname</th>
                         <th>lastname</th>
                         <th>dateOfBirth</th>
                         <th>email</th>
                         <!-- <th>emailme</th> -->
                         <th>address</th>
-                        <th>username</th>
                         <th>password</th>
                         <th>telephoneNumber</th>
                         <th>workingExperience</th>
                     </tr>
                     <tr th:each="cand : ${candidates}">
                         <td id="cid" th:text="${cand.getId()}"></td>
+                        <td id="cusername">
+                            <a th:text="${cand.getUsername()}" th:href="|/OglasiImi/kandidat/${cand.getId()}|"></a>
+                        </td>
                         <td id="cfirstname" th:text=${cand.getFirstname()}></td>
                         <td id="clastname" th:text="${cand.getLastname()}"></td>
                         <td id="cdateOfBirth" th:text="${cand.getDateOfBirth()}"></td>
                         <td id="cemail" th:text="${cand.getEmail()}"></td>
                         <!-- <td id="cemailme" th:text="${cand.isEmailMe()}"></td> -->
                         <td id="caddress" th:text="${cand.getAddress()}"></td>
-                        <td id="cusername" th:text="${cand.getUsername()}"></td>
                         <td id="cpassword" th:text="${cand.getPassword()}"></td>
                         <td id="ctelephoneNumber" th:text="${cand.getTelephoneNumber()}"></td>
                         <td id="cworkingExperience" th:text="${cand.getWorkingExperience()}"></td>
                         <td><button id="change">IZMENI</button></td>
-                        <td><button id="delete">IZBRISI</button></td>
+                        <form method="delete" th:action="|/OglasiImi/AdmininstratorSpace/candidates/delete/${cand.getId()}|">
+                            <td><button id="delete" type="submit">IZBRISI</button></td>
+                        </form>
                     </tr>
                 </table>
             </div>
@@ -97,6 +101,7 @@
                 <table id="einfo">
                     <tr>
                         <th>id</th>
+                        <th>username</th>
                         <th>companyName</th>
                         <th>place</th>
                         <th>industryBranch</th>
@@ -106,13 +111,15 @@
                         <th>country</th>
                         <th>address</th>
                         <th>pib</th>
-                        <th>username</th>
                         <th>password</th>
                         <!-- <th>emailme</th> -->
                         <th>linkToWebsite</th>
                     </tr>
                     <tr th:each="emp : ${employers}">
                         <td id="eid" th:text="${emp.getId()}"></td>
+                        <td id="cusername">
+                            <a th:text="${emp.getUsername()}" th:href="|/OglasiImi/poslodavac/${emp.getId()}|"></a>
+                        </td>
                         <td id="ecompanyName" th:text="${emp.getCompanyName()}"></td>
                         <td id="eplace" th:text="${emp.getPlace()}"></td>
                         <td id="eindustryBranch" th:text="${emp.getIndustryBranch()}"></td>
@@ -122,12 +129,13 @@
                         <td id="ecountry" th:text="${emp.getCountry()}"></td>
                         <td id="eaddress" th:text="${emp.getAddress()}"></td>
                         <td id="epib" th:text="${emp.getPib()}"></td>
-                        <td id="eusername" th:text="${emp.getUsername()}"></td>
                         <td id="epassword" th:text="${emp.getPassword()}"></td>
                         <!-- <td id="eemailme" th:text="${emp.isEmailMe()}"></td> -->
                         <td id="elinkToWebsite" th:text="${emp.getLinkToWebsite()}"></td>
                         <td><button id="change">IZMENI</button></td>
-                        <td><button id="delete">IZBRISI</button></td>
+                        <form method="delete" th:action="|/OglasiImi/AdmininstratorSpace/employers/delete/${emp.getId()}|">
+                            <td><button id="delete" type="submit">IZBRISI</button></td>
+                        </form>
                     </tr>
                 </table>
             </div>
@@ -169,7 +177,9 @@
                     </tr>
                     <tr th:each="ad : ${ads}">
                         <td id="adid" th:text="${ad.getId()}"></td>
-                        <td id="addescription" th:text="${ad.getDescription()}"></td>
+                        <td id="addescription">
+                            <a th:text="${ad.getDescription()}" th:href="|/OglasiImi/poslovi/oglas/${ad.getId()}|"></a>
+                        </td>
                         <td id="addateOfPosting" th:text="${ad.getDateOfPosting()}"></td>
                         <td id="addateDeadline" th:text="${ad.getDateDeadline()}"></td>
                         <!-- <td id="adworkFromHome" th:text="${ad.isWorkFromHome()}"></td> -->
@@ -177,7 +187,9 @@
                         <td id="adlikeCount" th:text="${ad.getLikeCount()}"></td>
                         <td id="adjob" th:text="${ad.getJob()}"></td>
                         <td><button id="change">IZMENI</button></td>
-                        <td><button id="delete">IZBRISI</button></td>
+                        <form method="delete" th:action="|/OglasiImi/AdmininstratorSpace/ads/delete/${ad.getId()}|">
+                            <td><button id="delete" type="submit">IZBRISI</button></td>
+                        </form>
                     </tr>
                 </table>
 
@@ -197,13 +209,17 @@
                     </tr>
                     <tr th:each="com : ${comments}">
                         <td id="coid" th:text="${com.getId()}"></td>
-                        <td id="cocomm" th:text="${com.getComm()}"></td>
+                        <td id="cocomm">
+                            <a th:text="${com.getComm()}" th:href="|/OglasiImi/poslovi/oglas/${ad.getId()}|"></a>
+                        </td>
                         <td id="coidEmployer" th:text="${com.getIdEmployer()}"></td>
                         <td id="coidCandidate" th:text="${com.getIdCandidate()}"></td>
                         <td id="coidResponse" th:text="${com.getIdResponse()}"></td>
                         <td id="codate" th:text="${com.getDate()}"></td>
                         <td><button id="change">IZMENI</button></td>
-                        <td><button id="delete">IZBRISI</button></td>
+                        <form method="delete" th:action="|/OglasiImi/AdmininstratorSpace/comments/delete/${comment.getId()}|">
+                            <td><button id="delete" type="submit">IZBRISI</button></td>
+                        </form>
                     </tr>
                 </table>
             </div>

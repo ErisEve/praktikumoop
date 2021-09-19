@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -523,6 +524,16 @@ public class AppController {
         model.addAttribute("candidates", candidateService.getCandidate());
        return "admin";
    }
+   @GetMapping("/OglasiImi/AdmininstratorSpace/candidates/delete/{id}")
+   public String deleteCandidate(@PathVariable Long id, Model model){
+        model.addAttribute("type", type);
+        model.addAttribute("currentUser", currentUser);
+        adminCase = "candidate";
+        model.addAttribute("adminCase", adminCase);
+        candidateService.deleteCandidate(id);
+        model.addAttribute("candidates", candidateService.getCandidate());
+   return "admin";
+   }
    @GetMapping("/OglasiImi/AdmininstratorSpace/employers")
    public String getAdminEmployersList(Model model){
         model.addAttribute("type", type);
@@ -531,6 +542,16 @@ public class AppController {
         model.addAttribute("adminCase", adminCase);
         model.addAttribute("employers", employerService.getEmployers());
        return "admin";
+   }
+   @GetMapping("/OglasiImi/AdmininstratorSpace/employers/delete/{id}")
+   public String deleteEmployer(@PathVariable Long id, Model model){
+        model.addAttribute("type", type);
+        model.addAttribute("currentUser", currentUser);
+        adminCase = "employer";
+        model.addAttribute("adminCase", adminCase);
+        employerService.deleteEmployer(id);
+        model.addAttribute("employers", employerService.getEmployers());
+   return "admin";
    }
    @GetMapping("/OglasiImi/AdmininstratorSpace/ads")
    public String getAdminAdList(Model model){
@@ -541,6 +562,16 @@ public class AppController {
         model.addAttribute("ads", adService.getAds());
        return "admin";
    }
+   @GetMapping("/OglasiImi/AdmininstratorSpace/ads/delete/{id}")
+   public String deleteAds(@PathVariable Long id, Model model){
+        model.addAttribute("type", type);
+        model.addAttribute("currentUser", currentUser);
+        adminCase = "ad";
+        model.addAttribute("adminCase", adminCase);
+        adService.deleteAd(id);
+        model.addAttribute("employers", adService.getAds());
+   return "admin";
+   }
    @GetMapping("/OglasiImi/AdmininstratorSpace/comments")
    public String getAdminCommentList(Model model){
         model.addAttribute("type", type);
@@ -549,5 +580,15 @@ public class AppController {
         model.addAttribute("adminCase", adminCase);
         model.addAttribute("comments", commentService.getComments());
        return "admin";
+   }
+   @GetMapping("/OglasiImi/AdmininstratorSpace/comments/delete/{id}")
+   public String deleteComments(@PathVariable Long id, Model model){
+        model.addAttribute("type", type);
+        model.addAttribute("currentUser", currentUser);
+        adminCase = "comment";
+        model.addAttribute("adminCase", adminCase);
+        commentService.deleteComment(id);
+        model.addAttribute("comments", commentService.getComments());
+   return "admin";
    }
 }

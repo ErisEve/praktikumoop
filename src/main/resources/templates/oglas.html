@@ -75,7 +75,6 @@
             <span th:text="${ad.getLikeCount()}"></span>
         </div>
         <!--            <p id="tekstOglasa">Tekst oglasa</p>
-
         |/OglasiImi/poslovi/oglas/${ad.getId()}|
         -->
         <!--            <div id="opis"> </div>-->
@@ -113,10 +112,8 @@
             <a th:case="*" th:href="@{/OglasiImi/prijava}">
                 <input id="b1" type="submit" value="konkurisi" />
             </a>
-
         </div>
         <!--Section for applications-->
-
         <!--Comment section-->
         <!-- <div> -->
         <div th:switch="${type}">
@@ -135,7 +132,6 @@
             <div th:each="com : ${coms}">
                 <p th:text="${com.name}"></p>
                 <p th:text="${com.comment}"></p>
-                <!-- <p style="display: none;" th:text="${comIds.get(coms.indexOf(com))}"></p> -->
                 <button id="reply" onclick="event.target.nextElementSibling.classList.toggle('active')">Reply</button>
                 <div class="reply-form-wrapper">
                     <form th:object="${newCom}" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/comment|" method="POST">
@@ -143,15 +139,13 @@
                         <input type="hidden" th:field="*{idCandidate}">
                         <input type="hidden" th:field="*{idEmployer}">
                         <input type="hidden" th:field="*{idAd}">
-                        <!-- <input type="hidden" th:name="response" th:field="*{idResponse}" th:value="${newCom.getIdResponse() == null} ? ${comIds.get(coms.indexOf(com))} : ${comIds.get(coms.indexOf(com))}"> -->
-                        <input type="hidden" th:value="*{idResponse}" th:attr="idResponse = ${comIds.get(coms.indexOf(com))}">
-                        <!-- th:value="${comIds.get(coms.indexOf(com))}"> 
+                        <input type="hidden" name="idResponse" th:value="*{id}">
+                        <!-- th:value="${comIds.get(coms.indexOf(com))}">
                         th:text="${__#{article.text('textVar')}__}"
                         -->
                         <button id="idk" type="submit">Postavi komentar</button>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
