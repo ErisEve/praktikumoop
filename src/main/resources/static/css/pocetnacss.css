@@ -1,5 +1,4 @@
-body
-{
+body {
     /*
     font-size: 20px;
     margin: 0;
@@ -7,11 +6,9 @@ body
     font-family: Tahoma,serif;
     font-variant: small-caps;
 */
-
     position: relative;
 }
 
-
 .navbar {
     overflow: hidden;
     background-color: #333;
@@ -25,17 +22,16 @@ body
     padding: 14px 16px;
     text-decoration: none;
 }
-.dropdown {
 
+.dropdown {
     float: left;
     overflow: hidden;
 }
 
 .dropdown .dropbtn {
-    font-family: Tahoma,serif;
+    font-family: Tahoma, serif;
     font-variant: small-caps;
     font-size: 20px;
-
     border: none;
     outline: none;
     color: white;
@@ -44,8 +40,10 @@ body
     margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: #579bbd;;
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+    background-color: #579bbd;
+    ;
 }
 
 .dropdown-content {
@@ -53,7 +51,7 @@ body
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -67,7 +65,8 @@ body
 }
 
 .dropdown-content a:hover {
-    background-color: #579bbd;;
+    background-color: #579bbd;
+    ;
 }
 
 .dropdown:hover .dropdown-content {
@@ -87,17 +86,16 @@ body
     padding: 14px 16px;
     text-decoration: none;
 }
-.dropdown {
 
+.dropdown {
     float: left;
     overflow: hidden;
 }
 
 .dropdown .dropbtn {
-    font-family: Tahoma,serif;
+    font-family: Tahoma, serif;
     font-variant: small-caps;
     font-size: 20px;
-
     border: none;
     outline: none;
     color: white;
@@ -106,8 +104,10 @@ body
     margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: #579bbd;;
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+    background-color: #579bbd;
+    ;
 }
 
 .dropdown-content {
@@ -115,7 +115,7 @@ body
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -129,52 +129,46 @@ body
 }
 
 .dropdown-content a:hover {
-    background-color: #579bbd;;
+    background-color: #579bbd;
+    ;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-
-#header
-{
+#header {
     /*position: relative;*/
     width: 100%;
     height: 600px;
-    /* background-image:url(job.jpg);*/
+    /* background-image: url([[@{/images/job.jpg}]]);*/
     /* background-image: url('/images/job.jpg');
      background-repeat: no-repeat;*/
     margin: 0;
     padding: 0;
     background-position: center;
     background-size: cover;
-
 }
-#header h1
-{
-    font-family: Tahoma,serif;
+
+#header h1 {
+    font-family: Tahoma, serif;
     margin: auto;
     color: whitesmoke;
     font-size: 50px;
     text-align: center;
-
-
 }
-#header h3
-{
-    font-family: Tahoma,serif;
+
+#header h3 {
+    font-family: Tahoma, serif;
     margin: auto;
     color: black;
     font-size: 20px;
     text-align: center;
-
-
 }
 
 
-
 /* Responsive columns - one column layout (vertical) on small screens */
+
 @media screen and (max-width: 600px) {
     .column {
         width: 100%;
@@ -199,15 +193,10 @@ body
     font-size: 16px;
 }
 
-
-
-#container
-{
+#container {
     margin: auto;
     background-color: white;
-
 }
-
 
 
 /*
@@ -251,44 +240,36 @@ li a:hover:not(.active)
 }
 */
 
-
-
-
-
-
-#headerNez
-{
+#headerNez {
     /*position: relative;*/
     width: 100%;
     height: 600px;
-    /*background-image:url(job.jpg);*/
+    /*background-image: url([[@{/images/job.jpg}]]);*/
     background-repeat: no-repeat;
     /* margin: 0;*/
     /* padding: 0;*/
     background-position: center;
     background-size: cover;
-
 }
-#headerNez,img{
+
+#headerNez,
+img {
     /*position: relative;*/
     width: 100%;
     height: 500px;
 }
 
-#pronajitePosao
-{
+#pronajitePosao {
     /*position: relative;*/
     top: -550px;
-    font-family: Tahoma,serif;
+    font-family: Tahoma, serif;
     /*margin: auto;*/
     color: white;
     font-size: 50px;
     text-align: center;
-
-
 }
-#search
-{
+
+#search {
     background-color: #8e9b9c;
     /* margin: auto;*/
     width: 1000px;
@@ -296,65 +277,63 @@ li a:hover:not(.active)
     border: none;
     border-radius: 50px;
     margin-top: 200px;
-
 }
-#input
-{
+
+#input {
     position: absolute;
-    margin: auto; !important;
+    margin: auto;
+    !important;
     padding: 0;
-    margin-left:30px; !important;
-    margin-top: 18px; !important;
-
+    margin-left: 30px;
+    !important;
+    margin-top: 18px;
+    !important;
 }
-.in
-{
+
+.in {
     width: 250px;
     height: 30px;
     border-radius: 50px;
     border: none;
-    font-family: Tahoma,serif;
+    font-family: Tahoma, serif;
     font-variant: small-caps;
-    color:#293949;
+    color: #293949;
     font-weight: bold;
 }
-#b1
-{
+
+#b1 {
     width: 120px;
     height: 30px;
     border-radius: 50px;
     margin-left: 40px;
     border: none;
-
-
 }
-#b1 a
-{
+
+#b1 a {
     text-decoration: none;
-    font-family: Tahoma,serif;
+    font-family: Tahoma, serif;
     font-weight: bold;
-    color:#293949;
+    color: #293949;
 }
-#main
-{
+
+#main {
     width: 100%;
     height: 500px;
     margin: 0;
     padding: 0;
-
 }
-#main h1
-{
-    font-family: Tahoma,serif;
+
+#main h1 {
+    font-family: Tahoma, serif;
     margin: auto;
-    color:#293949 ;
+    color: #293949;
     font-size: 50px;
     text-align: center;
 }
+
 * {
     box-sizing: border-box;
 }
-
 
 .column {
     margin-top: 50px;
@@ -369,22 +348,28 @@ li a:hover:not(.active)
     clear: both;
 }
 
+
 /* Style the counter cards */
+
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-    padding-bottom:20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* this adds the "card" effect */
+    padding-bottom: 20px;
     text-align: center;
     background-color: #8e9b9c;
     border-radius: 50px;
 }
-.card a
-{
+
+.card a {
     font-size: 20px;
     text-decoration: none;
     padding-bottom: 20px;
     color: whitesmoke;
 }
+
+
 /* Responsive columns - one column layout (vertical) on small screens */
+
 @media screen and (max-width: 600px) {
     .column {
         width: 100%;

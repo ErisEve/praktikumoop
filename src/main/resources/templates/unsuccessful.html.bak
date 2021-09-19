@@ -33,4 +33,3 @@
   <p>Usled neočekivane greške, preusmerićemo vas na početnu stranu.</p>
   <button type="submit"><a th:href="@{/OglasiImi/}">Nastavi</a></button>
 </body>
-</html>

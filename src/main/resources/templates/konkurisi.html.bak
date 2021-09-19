@@ -398,7 +398,7 @@ button:hover {
                 <h2>Lični podaci</h2>
                 <label class="lbl" for="fname">Zasto sam ja dobar/a za ovaj posao: </label><br>
                 <input type="text" th:field="*{experience}" id="fname" required><br>
-                <label class="lbl" for="fname">Moja edukacija i dosadasnje iskustvo: </label><br>
+                <label for="fname">Moja edukacija i dosadasnje iskustvo: </label><br>
                 <input type="text" th:field="*{education}" id="flastname" name="edkuacija" required><br>
                 <input type="hidden" th:field="*{idAd}">
                 <input type="hidden" th:field="*{idClient}">

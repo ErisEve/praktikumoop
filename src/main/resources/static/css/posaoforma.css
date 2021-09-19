@@ -1,136 +1,131 @@
-body{
+body {
     position: relative;
-    background-color:#d1cfcb;
-    
+    background-color: #d1cfcb;
 }
 
 .navbar {
-  overflow: hidden;
-  background-color: #333;
+    overflow: hidden;
+    background-color: #333;
 }
 
 .navbar a {
-  float: left;
-  font-size: 20px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+    float: left;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
-.dropdown {
 
-  float: left;
-  overflow: hidden;
+.dropdown {
+    float: left;
+    overflow: hidden;
 }
 
 .dropdown .dropbtn {
-  font-family: Tahoma,serif;
-  font-variant: small-caps;
-  font-size: 20px;
-   
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  margin: 0;
+    font-family: Tahoma, serif;
+    font-variant: small-caps;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: #579bbd;;
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+    background-color: #579bbd;
+    ;
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
 .dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
 }
 
 .dropdown-content a:hover {
-  background-color: #579bbd;;
+    background-color: #579bbd;
+    ;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
 }
-#header
-{
+
+#header {
     position: relative;
     width: 100%;
     height: 600px;
-    background-image:url(job.jpg);
+    background-image: url([[@{/images/job.jpg}]]);
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
     background-position: center;
     background-size: cover;
-    
 }
-#header h1
-{
-    font-family: Tahoma,serif; 
+
+#header h1 {
+    font-family: Tahoma, serif;
     margin: auto;
     color: whitesmoke;
     font-size: 50px;
     text-align: center;
-   
-   
 }
-#header h3
-{
-    font-family: Tahoma,serif; 
+
+#header h3 {
+    font-family: Tahoma, serif;
     margin: auto;
     color: black;
     font-size: 20px;
     text-align: center;
-   
-   
 }
-
 
 
 /* Responsive columns - one column layout (vertical) on small screens */
+
 @media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
 }
 
 .topnav-right {
-  float: right;
+    float: right;
 }
 
 .buttons {
-  border-radius: 50%;
-  background-color: #333;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+    border-radius: 50%;
+    background-color: #333;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 
 
 /*---------------------------------------------------------------------------*/
 
-
-.container{
+.container {
     /*
     position: relative;
     left: 230px;
@@ -139,108 +134,102 @@ body{
     width: 70%;
     height: 1200px;
     */
-        
     margin: auto;
     width: 60%;
     background-color: white;
     padding: 10px;
-    -webkit-box-shadow: -1px 1px 5px 2px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.75);
-    box-shadow: -1px -1px 3px 3px rgba(0,0,0,0.30);
-    
+    -webkit-box-shadow: -1px 1px 5px 2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 1px 5px 9px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px -1px 3px 3px rgba(0, 0, 0, 0.30);
 }
 
-
-#podaciOglas{
+#podaciOglas {
     position: relative;
     top: 10px;
     left: 30px;
-  
-    
-    
 }
-#podaciNaslov{
+
+#podaciNaslov {
     position: relative;
     left: 40px;
     font-size: 30px;
     color: #454545;
-    
 }
-#hr1{
+
+#hr1 {
     position: relative;
     left: -50px;
     width: 90%;
     border-top: 1px dotted #454545;
 }
-#podaciOglas{
+
+#podaciOglas {
     color: #454545;
-    font-weight:bold;
+    font-weight: bold;
     position: relative;
     left: 30px;
     font-size: 20px;
-   
 }
-#podaciOglas textarea{
-    
-    
-}
+
+#podaciOglas textarea {}
+
 #input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    
     -webkit-appearance: none;
-    margin: 0; 
+    margin: 0;
 }
+
 #input[type=number] {
-    -moz-appearance:textfield; 
+    -moz-appearance: textfield;
 }
 
-input[type=text]:focus{
-  outline: 2px solid #475a6b;
-  background-color: #e3e1dc;
-}
-input[type=tel]:focus{
-  outline: 2px solid #475a6b;
-  background-color: #e3e1dc;
-}
-input[type=email]:focus{
-  outline: 2px solid #475a6b;
-  background-color: #e3e1dc;
+input[type=text]:focus {
+    outline: 2px solid #475a6b;
+    background-color: #e3e1dc;
 }
 
-#radnovreme1{
+input[type=tel]:focus {
+    outline: 2px solid #475a6b;
+    background-color: #e3e1dc;
+}
+
+input[type=email]:focus {
+    outline: 2px solid #475a6b;
+    background-color: #e3e1dc;
+}
+
+#radnovreme1 {
     position: relative;
     top: 20px;
     left: 10px;
-    
 }
-#radnovreme2{
-    
+
+#radnovreme2 {
     position: relative;
     top: 20px;
     left: 10px;
 }
-#zarada{
+
+#zarada {
     position: relative;
     top: 20px;
     left: 10px;
-    
 }
-#povoljnosti{
+
+#povoljnosti {
     position: relative;
     top: 20px;
     left: 10px;
-    
 }
-#opisOglasa{
-     position: relative;
-     top: 20px;
+
+#opisOglasa {
+    position: relative;
+    top: 20px;
     left: 10px;
-    
 }
-#postavi{
+
+#postavi {
     position: relative;
     top: 40px;
-   left: -10px;
-
+    left: -10px;
 }
-

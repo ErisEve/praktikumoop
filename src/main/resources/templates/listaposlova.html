@@ -4,8 +4,290 @@
 <head>
     <title>Lista poslova</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link type="text/css" rel="stylesheet" th:href="@{/css/listaposlovacss.css}" />
+    <style>
+        body {
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma, serif;
+            font-variant: small-caps;
+            background-image: url([[@{/images/job.jpg}]]);
+            background-repeat: no-repeat;
+            background-size: 200% 150%;
+            color: #364b63;
+            text-align: center;
+            height: 1500px;
+        }
+        
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+        
+        .navbar a {
+            float: left;
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        
+        .dropdown .dropbtn {
+            font-family: Tahoma, serif;
+            font-variant: small-caps;
+            font-size: 20px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            margin: 0;
+        }
+        
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #579bbd;
+            ;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #579bbd;
+            ;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        #header {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background-color: #dee5ed;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        #header h1 {
+            font-family: Tahoma, serif;
+            margin: auto;
+            color: whitesmoke;
+            font-size: 50px;
+            text-align: center;
+        }
+        
+        #search {
+            background-color: #8e9b9c;
+            margin: auto;
+            width: 1000px;
+            height: 70px;
+            border: none;
+            border-radius: 50px;
+            margin-top: 200px;
+        }
+        
+        #input {
+            position: absolute;
+            margin: auto;
+            padding: 0;
+            margin-left: 30px;
+            margin-top: 18px;
+        }
+        
+        .in {
+            width: 250px;
+            height: 30px;
+            border-radius: 50px;
+            border: none;
+            font-family: Tahoma, serif;
+            font-variant: small-caps;
+            color: #293949;
+            font-weight: bold;
+        }
+        
+        #b1 {
+            width: 120px;
+            height: 30px;
+            border-radius: 50px;
+            margin-left: 40px;
+            border: none;
+        }
+        
+        #b1 a {
+            text-decoration: none;
+            font-family: Tahoma, serif;
+            font-weight: bold;
+            color: #293949;
+        }
+        
+        #main {
+            width: 100%;
+            height: 500px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #main h1 {
+            font-family: Tahoma, serif;
+            margin: auto;
+            color: #293949;
+            font-size: 50px;
+            text-align: center;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .column {
+            margin-top: 50px;
+            float: left;
+            width: 20%;
+            padding: 0 10px;
+        }
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Style the counter cards */
+        
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            /* this adds the "card" effect */
+            padding-bottom: 20px;
+            text-align: center;
+            background-color: #8e9b9c;
+            border-radius: 50px;
+        }
+        
+        .card a {
+            font-size: 20px;
+            text-decoration: none;
+            padding-bottom: 20px;
+            color: whitesmoke;
+        }
+        /* Responsive columns - one column layout (vertical) on small screens */
+        
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+        
+        .topnav-right {
+            float: right;
+        }
+        
+        #oglasi {
+            width: 95%;
+            height: 150px;
+            background-color: #c1ced7;
+            margin: auto;
+            font-family: Tahoma, serif;
+            display: table;
+            border-radius: 5px;
+        }
+        
+        #opisOglasa {
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-right: 10px;
+            position: relative;
+            width: 93%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            float: right;
+            background-color: whitesmoke;
+            height: 130px;
+        }
+        
+        #naslov {
+            display: table;
+            width: 100%;
+            height: 20px;
+            font-size: 15px;
+            position: absolute;
+        }
+        
+        #naslov a {
+            height: 15px;
+        }
+        
+        #nazivOglasa {
+            height: 20px;
+            font-size: 20px;
+            width: 500px;
+            float: left;
+            padding: 0;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        #nazivPoslodavca {
+            padding: 0;
+            height: 20px;
+            width: 500px;
+            float: right;
+            margin-right: 20px;
+            margin-top: 0px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        #datumIsteka {
+            font-weight: bold;
+            margin-top: 5px;
+            height: 10px;
+            width: 200px;
+            float: right;
+            padding: 0;
+        }
+        
+        #opis {
+            width: 95%;
+            margin: auto;
+            height: 80px;
+            background-color: whitesmoke;
+            margin-top: 25px;
+            padding: 0;
+        }
+        
+        h2 {
+            color: whitesmoke;
+        }
+    </style>
 </head>
 
 <body>
@@ -52,19 +334,16 @@
             </div>
         </div>
         <div id="oglasi" th:each="ad : ${keyword}">
-            <a th:href="|/OglasiImi/poslovi/oglas/${ad.getId()}|">
-                <p id="nazivOglasa" th:text="${ad.getDescription()}"></p>
-            </a>
-            <p id="nazivPoslodavca">Naziv posodavca</p>
-            <div id="opisOglasa" style="
-            width: 99%;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-          "></div>
-            <br />
-            <div id="datumIsteka" th:text="${ad.getDateDeadline()}">
-                <img th:src="@{/images/unnamed.png}" style="width: 20px; height: 20px" />
+            <div id="opisOglasa">
+                <div id="naslov" style="height:20px;">
+                    <p id="nazivPoslodavca">Naziv poslodavca</p>
+                    <a th:href="|/OglasiImi/poslovi/oglas/${ad.getId()}|">
+                        <p id="nazivOglasa" th:text="${ad.getDescription()}"></p>
+                    </a>
+                </div>
+                <div id="opis"></div>
+                <div id="datumIsteka" th:text="${ad.getDateDeadline()}">
+                </div>
             </div>
         </div>
     </div>

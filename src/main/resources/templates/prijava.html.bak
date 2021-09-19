@@ -129,7 +129,7 @@ a
 <button type="button" class="cancelbtn"><a th:href="@{/OglasiImi}" style="text-decoration: none;color:whitesmoke;">POCETNA STRANA</a></button>
             <span class="psw"> <a href="#">Zaboravljena lozinka?</a></span>
         </div>
-      </form>
+            </form>
 </body>
 
 </html>

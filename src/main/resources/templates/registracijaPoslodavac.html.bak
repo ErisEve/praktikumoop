@@ -132,9 +132,9 @@ button:hover {
     <h1>Registrujte se</h1>
     <p>Molimo popunite formu da kreirate nalog.</p>
     <label class="lbl" for="ime">Ime kompanije</label>
-    <input type="text" th:field="*{companyName}" placeholder="Uneti ime kompanije" name="ime" required><br>
+    <input type="text" th:field="*{companyName}" placeholder="Uneti ime kompanije" name="ime" required>
     <label class="lbl" for="contact">Kontakt</label>
-    <input type="text" th:field="*{contactNumber}" placeholder="Uneti broj telefona" name="contact" required><br>
+    <input type="text" th:field="*{contactNumber}" placeholder="Uneti broj telefona" name="contact" required>
     <label class="lbl" for="email">Email</label>
     <input type="text" th:field="*{email}" placeholder="Uneti Email" name="email" required><br>
     <label class="lbl" for="industry_branch">Branša</label>
