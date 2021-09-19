@@ -15,7 +15,6 @@ import com.example.demo.employers.Employer;
 import com.example.demo.employers.EmployerService;
 import com.example.demo.administrator.Administrator;
 import com.example.demo.administrator.AdministratorService;
-import com.example.demo.jobs.JobService;
 import com.example.demo.likes.LikeService;
 import com.example.demo.comments.Comment;
 
@@ -29,6 +28,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Iterator;
+import java.util.ArrayList;
 
 
 @Controller
@@ -37,6 +37,7 @@ public class AppController {
     String type = "unregistered";
     String adminCase = "space";
     String isliked = "not";
+    String personalized = "no";
     @Autowired
     AdService adService;
     @Autowired
@@ -45,8 +46,6 @@ public class AppController {
     private CandidateService candidateService;
     @Autowired
     private EmployerService employerService;
-    @Autowired
-    private JobService jobService;
     @Autowired
     private  AdministratorService administratorService;
     @Autowired
@@ -74,7 +73,6 @@ public class AppController {
                 if(currentUser instanceof Employer) type="employer";
                 if(currentUser instanceof Administrator) type="admin";
                 model.addAttribute("currentUser", currentUser);
-                model.addAttribute("jobs", jobService.getJobs());
                 model.addAttribute("emps", employerService.getEmployers());
                 model.addAttribute("type", type);
                 System.out.println(">>>>>>>>>Finally understand what you want from me");
@@ -87,7 +85,6 @@ public class AppController {
             
         } else {
             model.addAttribute("currentUser", currentUser);
-             model.addAttribute("jobs", jobService.getJobs());
             model.addAttribute("emps", employerService.getEmployers());
             model.addAttribute("type", type);
             System.out.println(">>>>>>>>>Whatever the fuck was that");
@@ -130,7 +127,7 @@ public class AppController {
         System.out.println(adForm);
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>");
         adService.addNewAd(adForm);
-        return "successful";
+        return "oglas";
     }
 
     @GetMapping("/OglasiImi/registracija")
@@ -190,10 +187,11 @@ public class AppController {
     }
 
     @GetMapping("/filter")
-    // @ResponseBody
     public String filterAds(@RequestParam(required = false) String keyword, @RequestParam(required = false) String job, Model model) {
         model.addAttribute("type", type);
         model.addAttribute("currentUser", currentUser);
+        personalized = "no";
+        model.addAttribute("personalized", personalized);
         if (keyword != null) {
             if (job != null) {
                 model.addAttribute("keyword", filterAdsByJob(job, adService.getSpecifiedAds(keyword)));
@@ -215,6 +213,22 @@ public class AppController {
                 model.addAttribute("keyword", adService.getAds());
             }
         }
+        return "listaposlova";
+    }
+
+    @GetMapping("OglasiImi/likedAds/{id}")
+    public String showLikedAds(@PathVariable Long id, Model model){
+        model.addAttribute("type", type);
+        model.addAttribute("currentUser", currentUser);
+        personalized = "yes";
+        model.addAttribute("personalized", personalized);
+        List<Liked> likes = likeService.findLikeByIdCandidate(id);
+        List<Ad> ads = new ArrayList<Ad>();
+        for (Liked liked : likes) {
+            Ad ad = adService.getAdById(liked.getIdAd());
+            ads.add(ad);
+        }
+        model.addAttribute("keyword", ads);
         return "listaposlova";
     }
 
@@ -318,6 +332,33 @@ public class AppController {
         model.addAttribute("userForm", currentUser);
         return "successful";
     }
+    @GetMapping("/OglasiImi/poslodavacChangeInfo")
+    public String changeAccInfoEmp(Model model){
+        model.addAttribute("type", type);
+        model.addAttribute("currentUser", currentUser);
+        model.addAttribute("userForm", new Employer());
+        System.out.println(">>>>>>>>>>>>okay the hell?>>>>>>>>>>>>>>>>");
+        System.out.println(currentUser);
+        return "profilPoslodavcaChange";
+    }
+
+    @PostMapping("/OglasiImi/poslodavacChangeInfo")
+    public String accountInfoSavedEmp(@ModelAttribute("userForm") Employer userForm, Model model){
+        if(!userForm.getCompanyName().equals("")) ((Employer)currentUser).setCompanyName(userForm.getCompanyName());
+        if(!userForm.getIndustryBranch().equals("")) ((Employer)currentUser).setIndustryBranch(userForm.getIndustryBranch());
+        if(!userForm.getAddress().equals("")) ((Employer)currentUser).setAddress(userForm.getAddress());
+        if(!userForm.getEmail().equals("")) ((Employer)currentUser).setEmail(userForm.getEmail());
+        if(!userForm.getPib().equals("")) ((Employer)currentUser).setPib(userForm.getPib());
+        if(!userForm.getLinkToWebsite().equals("")) ((Employer)currentUser).setLinkToWebsite(userForm.getLinkToWebsite());
+        if(!userForm.getCountry().equals("")) ((Employer)currentUser).setCountry(userForm.getCountry());
+        if(!userForm.getPostNumber().equals("")) ((Employer)currentUser).setPostNumber(userForm.getPostNumber());
+        if(!userForm.getContactNumber().equals("")) ((Employer)currentUser).setContactNumber(userForm.getContactNumber());
+        employerService.updateEmployer((Employer)currentUser);
+        System.out.println(currentUser);
+        System.out.println(">>>>>>>>>>>>Hello from the other side>>>>>>>>>>>>>>>>");
+        model.addAttribute("userForm", currentUser);
+        return "successful";
+    }
 
     @GetMapping("/OglasiImi/kandidat/{id}")
     public String getProfilNekogKandidata(Model model, @PathVariable Long id){
@@ -328,13 +369,35 @@ public class AppController {
         model.addAttribute("canChange", "no");
         return "profilKand";
     }
+
+    private int numberLikes(List<Ad> ads){
+        int n=0;
+        for (Ad ad : ads) {
+            n+=ad.getLikeCount();
+        }
+        return n;
+    }
+    
+    private int numberViews(List<Ad> ads){
+        int n=0;
+        for (Ad ad : ads) {
+            n+=ad.getViewCount();
+        }
+        return n;
+    }
+
     @GetMapping("/OglasiImi/poslodavac/{id}")
     public String getProfilNekogPoslodavca(Model model, @PathVariable Long id){
         Employer userForm = employerService.getEmployerById(id);
         model.addAttribute("userForm",userForm);
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("type", type);
-        model.addAttribute("ads", adService.findAdByEmpId(userForm.getId()));
+        List<Ad> ads = adService.findAdByEmpId(userForm.getId());
+        model.addAttribute("ads", ads);
+        model.addAttribute("noads", ads.size());
+        model.addAttribute("nolikes", numberLikes(ads));
+        model.addAttribute("noviews", numberViews(ads));
+        model.addAttribute("canChange", "no"); 
         return "profilPoslodavca";
     }
 
@@ -349,7 +412,12 @@ public class AppController {
         if (userForm.getUsername() == null)
             userForm = (Employer) currentUser;
         model.addAttribute("userForm", userForm);
-        model.addAttribute("ads", adService.findAdByEmpId(currentUser.getId()));
+        List<Ad> ads = adService.findAdByEmpId(userForm.getId());
+        model.addAttribute("ads", ads);
+        model.addAttribute("noads", ads.size());
+        model.addAttribute("nolikes", numberLikes(ads));
+        model.addAttribute("noviews", numberViews(ads));
+        model.addAttribute("canChange", "yes");
         return "profilPoslodavca";
     }
 

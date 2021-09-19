@@ -42,30 +42,19 @@
             </div>
         </div>
     </div>
-    <!--<div id="header">-->
-    <!--    <h1>Pronađite posao</h1>-->
-    <!--    <div id="search" th:action="@{/OglasiImi/poslovi}">-->
-    <!--        <div id="input">-->
-    <!--            <input id="kljucna1" class="in" type="text" placeholder="kljucnarec" th:value="*{selectedOptionKljucnaRec}">-->
-    <!--            <select class="in">-->
-    <!--                <option value="NONE">&#45;&#45;&#45;&#45;Oblast rada&#45;&#45;&#45;&#45;</option>-->
-    <!--                <option th:each="job : ${jobs}" th:text="${job.getCategory()}"  th:value="*{selectedOptionCategory}"></option>-->
-    <!--            </select>-->
-    <!--            <select class="in">-->
-    <!--                <option value="NONE">&#45;&#45;&#45;&#45;Kategorije&#45;&#45;&#45;&#45;</option>-->
-    <!--                <option th:each="job : ${jobs}" th:text="${job.getSubcategory()}" th:value="*{selectedOptionSubcategory}"></option>-->
-    <!--            </select>-->
-    <!--            <button id="b1"><a th:action="@{/OglasiImi/poslovi}" th:href="@{/OglasiImi/poslovi}" >PRETRAZI</a></button>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</div>-->
     <div class="content">
-        <h2>Lista poslova</h2>
+        <div th:switch="${personalized}">
+            <div th:case="yes">
+                <h2>Oglasi koji mi se svidjaju</h2>
+            </div>
+            <div th:case="no">
+                <h2>Lista poslova</h2>
+            </div>
+        </div>
         <div id="oglasi" th:each="ad : ${keyword}">
             <a th:href="|/OglasiImi/poslovi/oglas/${ad.getId()}|">
                 <p id="nazivOglasa" th:text="${ad.getDescription()}"></p>
             </a>
-            <!-- <p th:text="|/OglasiImi/poslovi/oglas/${ad.getId()}|"></p> -->
             <p id="nazivPoslodavca">Naziv posodavca</p>
             <div id="opisOglasa" style="
             width: 99%;

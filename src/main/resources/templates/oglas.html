@@ -76,7 +76,7 @@
                     <input id="b1" type="submit" value="konkurisi" /></a>
                 <div th:switch="${isliked}">
                     <div th:case="'not'">
-                        <form method="POST" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/liked|">
+                        <form id="formLike" method="POST" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/liked|">
                             <button id="hideme" type="submit">Like</button>
                         </form>
                     </div>
@@ -94,16 +94,16 @@
         <!--Section for applications-->
 
         <!--Comment section-->
-        <div>
-            <div>
-                <form th:object="${newCom}" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/comment|" method="POST">
-                    <textarea id="komentar" name="komentar" rows="4" cols="50" th:field="*{comm}"></textarea>
-                    <input type="hidden" th:field="*{idCandidate}">
-                    <input type="hidden" th:field="*{idEmployer}">
-                    <button id="idk" type="submit">Postavi komentar</button>
-                </form>
-            </div>
-            <div>
+        <!-- <div> -->
+        <!-- <div>
+            <form id="formInitialComment" th:object="${newCom}" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/comment|" method="POST">
+                <textarea id="komentar" name="komentar" rows="4" cols="50" th:field="*{comm}"></textarea>
+                <input type="hidden" th:field="*{idCandidate}">
+                <input type="hidden" th:field="*{idEmployer}">
+                <button id="idk" type="submit">Postavi komentar</button>
+            </form>
+        </div> -->
+        <!-- <div>
                 <div th:each="com : ${coms}">
                     <p th:text="${com.getComm()}"></p>
                     <button id="reply" onclick="toggleText()">Reply</button>
@@ -119,7 +119,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> -->
         <script>
             function toggleText() {
                 var x = document.getElementById("thisid");

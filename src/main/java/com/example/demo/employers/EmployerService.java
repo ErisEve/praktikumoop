@@ -26,6 +26,9 @@ public class EmployerService extends UserService {
         }
         employerRepository.save(employer);
     }
+    public void updateEmployer(Employer employer){
+        employerRepository.save(employer);
+    }
 
     public void deleteEmployer(Long id) {
         boolean b = employerRepository.existsById(id);
