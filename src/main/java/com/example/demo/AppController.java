@@ -33,6 +33,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Collections;
 
 
 @Controller
@@ -43,6 +44,7 @@ public class AppController {
     String isliked = "not";
     String isReported = "not";
     String personalized = "no";
+    List<Long> comIds;
     @Autowired
     AdService adService;
     @Autowired
@@ -253,6 +255,7 @@ public class AppController {
     }
     private List<Map<String, String>> getComments(Long idAd){
         List<Map<String,String>> result = new ArrayList<Map<String,String>>();
+        comIds = new ArrayList<Long>();
         List<Comment> coms = commentService.getCommentsByIdAd(idAd);
         for (Comment comment : coms) {
             Map<String, String> commentEntry = new HashMap<>();
@@ -262,8 +265,11 @@ public class AppController {
             }else{
                 commentEntry.put("name", employerService.getEmployerById(comment.getIdEmployer()).getUsername());
             }
+            comIds.add(comment.getId());
             result.add(commentEntry);
         }
+        Collections.reverse(comIds);
+        Collections.reverse(result);
         return result;
     }
 
@@ -294,6 +300,7 @@ public class AppController {
         System.out.println(type);
         model.addAttribute("type", type);
         model.addAttribute("coms", getComments(ad.getId()));
+        model.addAttribute("comIds",comIds);
         return "oglas";
     }
 
@@ -307,6 +314,7 @@ public class AppController {
         model.addAttribute("currentUser", currentUser);
         commentService.addNewComment(newCom);
         model.addAttribute("coms", getComments(ad.getId()));
+        model.addAttribute("comIds",comIds);
         return "oglas";
     }
 
@@ -331,6 +339,7 @@ public class AppController {
             model.addAttribute("newCom", new Comment(currentUser.getId(),null, ad.getId()));
         }
         model.addAttribute("coms", getComments(ad.getId()));
+        model.addAttribute("comIds",comIds);
         return "oglas";
     }
 
@@ -350,6 +359,7 @@ public class AppController {
             model.addAttribute("newCom", new Comment(currentUser.getId(),null, ad.getId()));
         }
         model.addAttribute("coms", getComments(ad.getId()));
+        model.addAttribute("comIds",comIds);
         return "oglas";
     }
 
