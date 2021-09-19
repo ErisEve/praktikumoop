@@ -245,12 +245,15 @@ public class AppController {
         ad.incrementViewCount();
         adService.updateAd(ad);
         isliked = "not";
-        List<Liked> likes = likeService.findLikeByIdCandidate(currentUser.getId());
-        if(likes!=null && checkIfLiked(likes, ad.getId())) isliked = "yes";
+        if(currentUser != null) {
+            List<Liked> likes = likeService.findLikeByIdCandidate(currentUser.getId());
+            if(likes!=null && checkIfLiked(likes, ad.getId())) isliked = "yes";
+        
         if(currentUser instanceof Candidate) { 
             model.addAttribute("newCom", new Comment(null, currentUser.getId(), ad.getId()));
         }else{
             model.addAttribute("newCom", new Comment(currentUser.getId(),null, ad.getId()));
+        }
         }
         model.addAttribute("isliked",isliked);
         model.addAttribute("ad", ad);
