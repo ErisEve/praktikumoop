@@ -31,6 +31,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 
 @Controller
@@ -249,6 +251,22 @@ public class AppController {
         }
         return false;
     }
+    private List<Map<String, String>> getComments(Long idAd){
+        List<Map<String,String>> result = new ArrayList<Map<String,String>>();
+        List<Comment> coms = commentService.getCommentsByIdAd(idAd);
+        for (Comment comment : coms) {
+            Map<String, String> commentEntry = new HashMap<>();
+            commentEntry.put("comment", comment.getComm());
+            if(comment.getIdCandidate()!=null) {
+                commentEntry.put("name", candidateService.getCandidateById(comment.getIdCandidate()).getUsername());
+            }else{
+                commentEntry.put("name", employerService.getEmployerById(comment.getIdEmployer()).getUsername());
+            }
+            result.add(commentEntry);
+        }
+        return result;
+    }
+
     @GetMapping("/OglasiImi/poslovi/oglas/{id}")
     public String getOglas(@PathVariable Long id, Model model) {
         Ad ad = adService.getAdById(id);
@@ -275,7 +293,7 @@ public class AppController {
         model.addAttribute("currentUser", currentUser);
         System.out.println(type);
         model.addAttribute("type", type);
-        model.addAttribute("coms", commentService.getCommentsByIdAd(ad.getId()));
+        model.addAttribute("coms", getComments(ad.getId()));
         return "oglas";
     }
 
@@ -288,7 +306,7 @@ public class AppController {
         model.addAttribute("ad", ad);
         model.addAttribute("currentUser", currentUser);
         commentService.addNewComment(newCom);
-        model.addAttribute("coms", commentService.getCommentsByIdAd(ad.getId()));
+        model.addAttribute("coms", getComments(ad.getId()));
         return "oglas";
     }
 
@@ -312,7 +330,7 @@ public class AppController {
         }else{
             model.addAttribute("newCom", new Comment(currentUser.getId(),null, ad.getId()));
         }
-        model.addAttribute("coms", commentService.getCommentsByIdAd(ad.getId()));
+        model.addAttribute("coms", getComments(ad.getId()));
         return "oglas";
     }
 
@@ -331,7 +349,7 @@ public class AppController {
         }else{
             model.addAttribute("newCom", new Comment(currentUser.getId(),null, ad.getId()));
         }
-        model.addAttribute("coms", commentService.getCommentsByIdAd(ad.getId()));
+        model.addAttribute("coms", getComments(ad.getId()));
         return "oglas";
     }
 

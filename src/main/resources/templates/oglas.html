@@ -124,7 +124,8 @@
         </div>
         <div>
             <div th:each="com : ${coms}">
-                <p th:text="${com.getComm()}"></p>
+                <p th:text="${com.name}"></p>
+                <p th:text="${com.comment}"></p>
                 <button id="reply" onclick="toggleText()">Reply</button>
                 <div style="display: none;" id="thisid">
                     <form th:object="${newCom}" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/comment|" method="POST">
