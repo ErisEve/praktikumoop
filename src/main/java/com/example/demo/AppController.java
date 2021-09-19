@@ -290,6 +290,12 @@ public class AppController {
         model.addAttribute("ad", ad);
         System.out.println(new Liked(ad.getId(),currentUser.getId()));
         likeService.addNewLike(new Liked(ad.getId(),currentUser.getId()));
+        if(currentUser instanceof Candidate) { 
+            model.addAttribute("newCom", new Comment(null, currentUser.getId(), ad.getId()));
+        }else{
+            model.addAttribute("newCom", new Comment(currentUser.getId(),null, ad.getId()));
+        }
+        model.addAttribute("coms", commentService.getCommentsByIdAd(ad.getId()));
         return "oglas";
     }
 

@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 public class NotificationReportService {
     private final NotificationReportRepository notificationReportRepository;
+    private static Long lastid=0L;
 
     @Autowired
     public NotificationReportService(NotificationReportRepository notificationReportRepository) {
@@ -22,6 +23,8 @@ public class NotificationReportService {
     }
 
     public void addNewNotificationReport(NotificationReport notificationReport) {
+        if(notificationReportRepository.existsById(notificationReport.getId())) notificationReport.setId(lastid+1L);
+        lastid=lastid+1L;
         notificationReportRepository.save(notificationReport);
     }
 

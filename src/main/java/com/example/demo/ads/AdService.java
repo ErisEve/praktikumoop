@@ -7,7 +7,8 @@ import java.util.List;
 @Service
 public class AdService {
     private final AdRepository adRepository;
-
+    private static Long lastid=0L;
+    
     @Autowired
     public AdService(AdRepository adRepository) {
         this.adRepository = adRepository;
@@ -29,6 +30,8 @@ public class AdService {
     }
 
     public void addNewAd(Ad ad) {
+        if(adRepository.existsById(ad.getId())) ad.setId(lastid+1L);
+        lastid=lastid+1L;
         adRepository.save(ad);
     }
 

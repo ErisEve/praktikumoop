@@ -95,19 +95,23 @@
 
         <!--Comment section-->
         <!-- <div> -->
-        <!-- <div>
-            <form id="formInitialComment" th:object="${newCom}" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/comment|" method="POST">
-                <textarea id="komentar" name="komentar" rows="4" cols="50" th:field="*{comm}"></textarea>
-                <input type="hidden" th:field="*{idCandidate}">
-                <input type="hidden" th:field="*{idEmployer}">
-                <button id="idk" type="submit">Postavi komentar</button>
-            </form>
-        </div> -->
-        <!-- <div>
-                <div th:each="com : ${coms}">
-                    <p th:text="${com.getComm()}"></p>
-                    <button id="reply" onclick="toggleText()">Reply</button>
-                    <div style="display: none;" id="thisid">
+        <div th:switch="${type}">
+            <div th:case="unregistered"> Registruj se da komentarises!</div>
+            <div th:case="*">
+                <form id="formInitialComment" th:object="${newCom}" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/comment|" method="POST">
+                    <textarea id="komentar" name="comm" rows="4" cols="50" th:field="*{comm}"></textarea>
+                    <input type="hidden" th:field="*{idCandidate}" name="idCandidate">
+                    <input type="hidden" th:field="*{idEmployer}" name="idEmployer">
+                    <input type="hidden" th:field="*{idAd}" name="idAd">
+                    <button id="idk" type="submit">Postavi komentar</button>
+                </form>
+            </div>
+        </div>
+        <div>
+            <div th:each="com : ${coms}">
+                <p th:text="${com.getComm()}"></p>
+                <button id="reply" onclick="toggleText()">Reply</button>
+                <!-- <div style="display: none;" id="thisid">
                         <form th:object="${newCom}" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/comment|" method="POST">
                             <textarea id="komentar" name="komentar" rows="4" cols="50" th:field="*{comm}"></textarea>
                             <input type="hidden" th:field="*{idCandidate}">
@@ -115,21 +119,21 @@
                             <input type="hidden" th:field="*{idAd}">
                             <button id="idk" type="submit">Postavi komentar</button>
                         </form>
-                    </div>
+                    </div> -->
 
-                </div>
             </div>
-        </div> -->
-        <script>
-            function toggleText() {
-                var x = document.getElementById("thisid");
-                if (x.style.display === "none") {
-                    x.style.display = "block";
-                } else {
-                    x.style.display = "none";
-                }
+        </div>
+    </div>
+    <script>
+        function toggleText() {
+            var x = document.getElementById("thisid");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
             }
-        </script>
+        }
+    </script>
 </body>
 
 </html>

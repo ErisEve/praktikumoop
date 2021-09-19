@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 public class CommentService {
     private final CommentRepository commentRepository;
+    private static Long lastid=0L;
 
     @Autowired
     public CommentService(CommentRepository commentRepository) {
@@ -24,6 +25,8 @@ public class CommentService {
         return commentRepository.findCommentsByIdAd(idAd);
     }
     public void addNewComment(Comment comment) {
+        if(commentRepository.existsById(comment.getId())) comment.setId(lastid+1L);
+        lastid=lastid+1L;
         commentRepository.save(comment);
     }
 
