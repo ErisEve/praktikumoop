@@ -210,7 +210,7 @@
                     <tr th:each="com : ${comments}">
                         <td id="coid" th:text="${com.getId()}"></td>
                         <td id="cocomm">
-                            <a th:text="${com.getComm()}" th:href="|/OglasiImi/poslovi/oglas/${ad.getId()}|"></a>
+                            <a th:text="${com.getComm()}" th:href="|/OglasiImi/poslovi/oglas/${com.getIdAd()}|"></a>
                         </td>
                         <td id="coidEmployer" th:text="${com.getIdEmployer()}"></td>
                         <td id="coidCandidate" th:text="${com.getIdCandidate()}"></td>

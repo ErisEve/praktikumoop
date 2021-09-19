@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+​
 
 <head>
     <title th:text="${ad.getDescription()}"></title>
@@ -17,6 +18,7 @@
         }
     </style>
 </head>
+​
 
 <body>
     <div class="navbar">
@@ -75,6 +77,7 @@
             <span th:text="${ad.getLikeCount()}"></span>
         </div>
         <!--            <p id="tekstOglasa">Tekst oglasa</p>
+​
         |/OglasiImi/poslovi/oglas/${ad.getId()}|
         -->
         <!--            <div id="opis"> </div>-->
@@ -112,8 +115,10 @@
             <a th:case="*" th:href="@{/OglasiImi/prijava}">
                 <input id="b1" type="submit" value="konkurisi" />
             </a>
+            ​
         </div>
         <!--Section for applications-->
+        ​
         <!--Comment section-->
         <!-- <div> -->
         <div th:switch="${type}">
@@ -139,16 +144,24 @@
                         <input type="hidden" th:field="*{idCandidate}">
                         <input type="hidden" th:field="*{idEmployer}">
                         <input type="hidden" th:field="*{idAd}">
-                        <input type="hidden" name="idResponse" th:value="*{id}">
+                        <div th:if="${newCom.getIdResponse()}==null">
+                            <input type="hidden" name="idResponse" th:value="${com.getId()}">
+                        </div>
+                        <div th:unless="${newCom.getIdResponse()}==null">
+                            <input type="hidden" name="idResponse" th:value="${newCom.getIdResponse()}">
+                        </div>
+
                         <!-- th:value="${comIds.get(coms.indexOf(com))}">
                         th:text="${__#{article.text('textVar')}__}"
                         -->
                         <button id="idk" type="submit">Postavi komentar</button>
                     </form>
                 </div>
+                ​
             </div>
         </div>
     </div>
 </body>
+​
 
 </html>
