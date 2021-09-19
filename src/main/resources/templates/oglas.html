@@ -137,6 +137,7 @@
             <div th:each="com : ${coms}">
                 <p th:text="${com.name}"></p>
                 <p th:text="${com.comment}"></p>
+                <p th:text="${comIds.get(coms.indexOf(com))}" style="display: none;"></p>
                 <button id="reply" onclick="event.target.nextElementSibling.classList.toggle('active')">Reply</button>
                 <div class="reply-form-wrapper">
                     <form th:object="${newCom}" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/comment|" method="POST">
@@ -145,7 +146,7 @@
                         <input type="hidden" th:field="*{idEmployer}">
                         <input type="hidden" th:field="*{idAd}">
                         <div th:if="${newCom.getIdResponse()}==null">
-                            <input type="hidden" name="idResponse" th:value="${com.getId()}">
+                            <input type="hidden" name="idResponse" th:value="${comIds.get(coms.indexOf(com))}">
                         </div>
                         <div th:unless="${newCom.getIdResponse()}==null">
                             <input type="hidden" name="idResponse" th:value="${newCom.getIdResponse()}">
