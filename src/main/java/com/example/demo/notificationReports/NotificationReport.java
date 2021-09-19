@@ -19,9 +19,13 @@ public class NotificationReport{
     )
     private Long id;
     private String type;
+    private Long idReportedThing;
+    private Long idCandidate;
 
-    public NotificationReport(String type) {
+    public NotificationReport(String type, Long idReportedThing, Long idCandidate) {
         this.type=type;
+        this.idReportedThing = idReportedThing;
+        this.idCandidate = idCandidate;
     }
 
     public NotificationReport() {
@@ -31,12 +35,24 @@ public class NotificationReport{
     public Long getId() {
         return id;
     }
+    public Long getIdCandidate() {
+        return idCandidate;
+    }
+    public Long getIdReportedThing() {
+        return idReportedThing;
+    }
     public String getType()
     {
         return type;
     }
     public void setId(Long id) {
         this.id = id;
+    }
+    public void setIdCandidate(Long id) {
+        this.idCandidate = id;
+    }
+    public void setIdReportedThing(Long id) {
+        this.idReportedThing = id;
     }
     public void setType(String type) {
         this.type = type;

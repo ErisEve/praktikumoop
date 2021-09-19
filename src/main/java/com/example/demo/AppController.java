@@ -17,6 +17,8 @@ import com.example.demo.administrator.Administrator;
 import com.example.demo.administrator.AdministratorService;
 import com.example.demo.likes.LikeService;
 import com.example.demo.comments.Comment;
+import com.example.demo.notificationReports.NotificationReport;
+import com.example.demo.notificationReports.NotificationReportService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +39,7 @@ public class AppController {
     String type = "unregistered";
     String adminCase = "space";
     String isliked = "not";
+    String isReported = "not";
     String personalized = "no";
     @Autowired
     AdService adService;
@@ -54,6 +57,8 @@ public class AppController {
     private LikeService likeService;
     @Autowired
     private CommentService commentService;
+    @Autowired
+    private NotificationReportService notificationReportService;
 
     @GetMapping("/OglasiImi")
     public String getPocetna(Model model, String usrname, String pswrd) {
@@ -238,16 +243,25 @@ public class AppController {
         }
         return false;
     }
-
+    private boolean checkIfReported(List<NotificationReport> reports, Long id, String typeofreport){
+        for (NotificationReport report : reports) {
+            if(report.getType().equals(typeofreport) && report.getIdReportedThing()==id) return true;
+        }
+        return false;
+    }
     @GetMapping("/OglasiImi/poslovi/oglas/{id}")
     public String getOglas(@PathVariable Long id, Model model) {
         Ad ad = adService.getAdById(id);
         ad.incrementViewCount();
         adService.updateAd(ad);
         isliked = "not";
+        isReported = "not";
         if(currentUser != null) {
             List<Liked> likes = likeService.findLikeByIdCandidate(currentUser.getId());
             if(likes!=null && checkIfLiked(likes, ad.getId())) isliked = "yes";
+
+            List<NotificationReport> reports = notificationReportService.findReportByIdCandidate(currentUser.getId());
+            if(reports!=null && checkIfReported(reports, ad.getId(), "ad")) isReported = "yes";
         
         if(currentUser instanceof Candidate) { 
             model.addAttribute("newCom", new Comment(null, currentUser.getId(), ad.getId()));
@@ -256,6 +270,7 @@ public class AppController {
         }
         }
         model.addAttribute("isliked",isliked);
+        model.addAttribute("isReported", isReported);
         model.addAttribute("ad", ad);
         model.addAttribute("currentUser", currentUser);
         System.out.println(type);
@@ -269,6 +284,7 @@ public class AppController {
         Ad ad = adService.getAdById(id);
         model.addAttribute("type", type);
         model.addAttribute("isliked",isliked);
+        model.addAttribute("isReported", isReported);
         model.addAttribute("ad", ad);
         model.addAttribute("currentUser", currentUser);
         commentService.addNewComment(newCom);
@@ -287,9 +303,29 @@ public class AppController {
         System.out.println(ad);
         isliked = "yes";
         model.addAttribute("isliked",isliked);
+        model.addAttribute("isReported", isReported);
         model.addAttribute("ad", ad);
         System.out.println(new Liked(ad.getId(),currentUser.getId()));
         likeService.addNewLike(new Liked(ad.getId(),currentUser.getId()));
+        if(currentUser instanceof Candidate) { 
+            model.addAttribute("newCom", new Comment(null, currentUser.getId(), ad.getId()));
+        }else{
+            model.addAttribute("newCom", new Comment(currentUser.getId(),null, ad.getId()));
+        }
+        model.addAttribute("coms", commentService.getCommentsByIdAd(ad.getId()));
+        return "oglas";
+    }
+
+    @PostMapping("/OglasiImi/poslovi/oglas/{id}/reported")
+    public String reportOglas(@PathVariable Long id, Model model){
+        Ad ad = adService.getAdById(id);
+        model.addAttribute("currentUser", currentUser);
+        model.addAttribute("type", type);
+        isReported = "yes";
+        model.addAttribute("isliked",isliked);
+        model.addAttribute("ad", ad);
+        model.addAttribute("isReported", isReported);
+        notificationReportService.addNewNotificationReport(new NotificationReport("ad",ad.getId(),currentUser.getId()));
         if(currentUser instanceof Candidate) { 
             model.addAttribute("newCom", new Comment(null, currentUser.getId(), ad.getId()));
         }else{
@@ -376,6 +412,12 @@ public class AppController {
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("type", type);
         model.addAttribute("canChange", "no");
+        isReported = "not";
+        if(currentUser != null) {
+            List<NotificationReport> reports = notificationReportService.findReportByIdCandidate(currentUser.getId());
+            if(reports!=null && checkIfReported(reports, userForm.getId(), "candidate")) isReported = "yes";
+        }
+        model.addAttribute("isReported", isReported);
         return "profilKand";
     }
 
@@ -407,6 +449,12 @@ public class AppController {
         model.addAttribute("nolikes", numberLikes(ads));
         model.addAttribute("noviews", numberViews(ads));
         model.addAttribute("canChange", "no"); 
+        isReported = "not";
+        if(currentUser != null) {
+            List<NotificationReport> reports = notificationReportService.findReportByIdCandidate(currentUser.getId());
+            if(reports!=null && checkIfReported(reports, userForm.getId(), "employer")) isReported = "yes";
+        }
+        model.addAttribute("isReported", isReported);
         return "profilPoslodavca";
     }
 

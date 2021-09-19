@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class LikeService {
     private final LikeRepository likeRepository;
-    private static Long lastid=0L;
+    // private static Long lastid=0L;
 
     @Autowired
     public LikeService(LikeRepository likeRepository) {
@@ -23,8 +23,8 @@ public class LikeService {
     }
 
     public void addNewLike(Liked like) {
-        if(likeRepository.existsById(like.getId())) like.setId(lastid+1L);
-        lastid=lastid+1L;
+        // if(likeRepository.existsById(like.getId())) like.setId(lastid+1L);
+        // lastid=lastid+1L;
         likeRepository.save(like);
     }
     public List<Liked> findLikeByIdCandidate(Long id){

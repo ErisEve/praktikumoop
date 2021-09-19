@@ -82,9 +82,24 @@
                     </div>
                     <div th:case="'yes'"></div>
                 </div>
+                <div th:switch="${isReported}">
+                    <div th:case="'not'">
+                        <form id="formReport" method="POST" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/reported|">
+                            <button id="hideme2" type="submit">Report</button>
+                        </form>
+                    </div>
+                    <div th:case="'yes'"></div>
+                </div>
             </div>
             <div th:case="employer">
-
+                <div th:switch="${isReported}">
+                    <div th:case="'not'">
+                        <form id="formReport" method="POST" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/reported|">
+                            <button id="hideme2" type="submit">Report</button>
+                        </form>
+                    </div>
+                    <div th:case="'yes'"></div>
+                </div>
             </div>
             <a th:case="*" th:href="@{/OglasiImi/prijava}">
                 <input id="b1" type="submit" value="konkurisi" />
@@ -111,15 +126,15 @@
             <div th:each="com : ${coms}">
                 <p th:text="${com.getComm()}"></p>
                 <button id="reply" onclick="toggleText()">Reply</button>
-                <!-- <div style="display: none;" id="thisid">
-                        <form th:object="${newCom}" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/comment|" method="POST">
-                            <textarea id="komentar" name="komentar" rows="4" cols="50" th:field="*{comm}"></textarea>
-                            <input type="hidden" th:field="*{idCandidate}">
-                            <input type="hidden" th:field="*{idEmployer}">
-                            <input type="hidden" th:field="*{idAd}">
-                            <button id="idk" type="submit">Postavi komentar</button>
-                        </form>
-                    </div> -->
+                <div style="display: none;" id="thisid">
+                    <form th:object="${newCom}" th:action="|/OglasiImi/poslovi/oglas/${ad.getId()}/comment|" method="POST">
+                        <textarea id="komentar" name="komentar" rows="4" cols="50" th:field="*{comm}"></textarea>
+                        <input type="hidden" th:field="*{idCandidate}">
+                        <input type="hidden" th:field="*{idEmployer}">
+                        <input type="hidden" th:field="*{idAd}">
+                        <button id="idk" type="submit">Postavi komentar</button>
+                    </form>
+                </div>
 
             </div>
         </div>
