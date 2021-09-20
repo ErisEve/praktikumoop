@@ -401,7 +401,7 @@
                         <td id="cpassword" th:text="${cand.getPassword()}"></td>
                         <td id="ctelephoneNumber" th:text="${cand.getTelephoneNumber()}"></td>
                         <td id="cworkingExperience" th:text="${cand.getWorkingExperience()}"></td>
-                        <td><button id="change">IZMENI</button></td>
+                        <td><button id="change"><a th:href="|/OglasiImi/AdmininstratorSpace/candidates/update/${cand.getId()}|">IZMENI</a</button></td>
                         <form method="delete" th:action="|/OglasiImi/AdmininstratorSpace/candidates/delete/${cand.getId()}|">
                             <td><button id="delete" type="submit">IZBRISI</button></td>
                         </form>
@@ -446,7 +446,7 @@
                         <td id="epassword" th:text="${emp.getPassword()}"></td>
                         <!-- <td id="eemailme" th:text="${emp.isEmailMe()}"></td> -->
                         <td id="elinkToWebsite" th:text="${emp.getLinkToWebsite()}"></td>
-                        <td><button id="change">IZMENI</button></td>
+                        <td><button id="change"><a th:href="|/OglasiImi/AdmininstratorSpace/employers/update/${emp.getId()}|">IZMENI</a></button></td>
                         <form method="delete" th:action="|/OglasiImi/AdmininstratorSpace/employers/delete/${emp.getId()}|">
                             <td><button id="delete" type="submit">IZBRISI</button></td>
                         </form>
@@ -500,7 +500,6 @@
                         <td id="adviewCount" th:text="${ad.getViewCount()}"></td>
                         <td id="adlikeCount" th:text="${ad.getLikeCount()}"></td>
                         <td id="adjob" th:text="${ad.getJob()}"></td>
-                        <td><button id="change">IZMENI</button></td>
                         <form method="delete" th:action="|/OglasiImi/AdmininstratorSpace/ads/delete/${ad.getId()}|">
                             <td><button id="delete" type="submit">IZBRISI</button></td>
                         </form>
@@ -530,8 +529,7 @@
                         <td id="coidCandidate" th:text="${com.getIdCandidate()}"></td>
                         <td id="coidResponse" th:text="${com.getIdResponse()}"></td>
                         <td id="codate" th:text="${com.getDate()}"></td>
-                        <td><button id="change">IZMENI</button></td>
-                        <form method="delete" th:action="|/OglasiImi/AdmininstratorSpace/comments/delete/${comment.getId()}|">
+                        <form method="delete" th:action="|/OglasiImi/AdmininstratorSpace/comments/delete/${com.getId()}|">
                             <td><button id="delete" type="submit">IZBRISI</button></td>
                         </form>
                     </tr>

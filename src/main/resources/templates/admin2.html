@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Admin</title>
+    <style>
+        button {
+            float: right;
+        }
+        
+        #navbar {
+            width: 100%;
+            height: 50px;
+            background-color: skyblue;
+        }
+        
+        body {
+            width: 100%;
+            background-image: url("job.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 150%;
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma, serif;
+            font-variant: small-caps;
+            background-color: #dee5ed;
+            color: #364b63;
+            text-align: center;
+        }
+        
+        columns {
+            width: 1270px;
+            height: 500px;
+        }
+        
+        #navleft {
+            margin-top: 10px;
+            width: 80px;
+            height: 100%;
+            border: 3px solid white;
+            float: left;
+            padding: 0;
+            border-radius: 10px;
+            color: whitesmoke;
+            margin-left: 10px;
+        }
+        
+        ul {
+            text-decoration: none;
+            margin: 0;
+            width: 80%;
+            height: 90%;
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+            width: 70px;
+            height: 50px;
+        }
+        
+        #main {
+            width: 100%;
+            height: 100%;
+            float: left;
+        }
+        
+        #notifications {
+            margin-top: 10px;
+            width: 10%;
+            height: 100%;
+            border: 3px solid whitesmoke;
+            float: right;
+            padding-top: 10px;
+            border-radius: 10px;
+            color: whitesmoke;
+        }
+        
+        h4 {
+            font-size: 10px;
+            margin: 5px;
+            margin-bottom: 10px;
+        }
+        
+        #ncontent {
+            background-color: lightsteelblue;
+            width: 98%;
+            margin-top: 10px;
+            height: 70px;
+            margin: auto;
+            border-radius: 10px;
+            margin-bottom: 5px;
+        }
+        
+        #candidate {
+            width: 100%;
+            margin: 5px;
+            height: 70px;
+            background-color: whitesmoke;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        
+        h3 {
+            margin: 0;
+        }
+        
+        #cinfo {
+            margin-top: -5px;
+            width: 100%;
+            display: table;
+            position: absolute;
+        }
+        
+        #employer {
+            width: 100%;
+            margin: 5px;
+            height: 70px;
+            background-color: whitesmoke;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        
+        #einfo {
+            margin-top: -5px;
+            width: 100%;
+            display: table;
+            position: absolute;
+        }
+        
+        #admin {
+            width: 100%;
+            margin: 5px;
+            height: 70px;
+            background-color: whitesmoke;
+            margin-top: 10px;
+        }
+        
+        #ainfo {
+            margin-top: -5px;
+            width: 100%;
+            display: table;
+            position: absolute;
+        }
+        
+        #ad {
+            width: 100%;
+            margin: 5px;
+            height: 70px;
+            background-color: whitesmoke;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        
+        #adinfo {
+            margin-top: -5px;
+            width: 100%;
+            display: table;
+            position: absolute;
+        }
+        
+        #comment {
+            width: 100%;
+            margin: 5px;
+            height: 70px;
+            background-color: whitesmoke;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        
+        #cominfo {
+            margin-top: -5px;
+            width: 100%;
+            display: table;
+            position: absolute;
+        }
+        
+        table {
+            position: relative;
+            width: 100%;
+            height: 50px;
+        }
+        
+        th {
+            width: 200px;
+            height: 10px;
+            margin: 5px;
+            padding: 0;
+        }
+        
+        tr {
+            width: 00px;
+        }
+        
+        td {
+            width: 200px;
+            height: 10px;
+            margin: 5px;
+            padding: 0;
+        }
+        
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+        
+        .navbar a {
+            float: left;
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        
+        .dropdown .dropbtn {
+            font-family: Tahoma, serif;
+            font-variant: small-caps;
+            font-size: 20px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            margin: 0;
+        }
+        
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #579bbd;
+            ;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #579bbd;
+            ;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        #header {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background-image: url("/images/job.png");
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        #header h1 {
+            font-family: Tahoma, serif;
+            margin: auto;
+            color: whitesmoke;
+            font-size: 50px;
+            text-align: center;
+        }
+        
+        #header h3 {
+            font-family: Tahoma, serif;
+            margin: auto;
+            color: black;
+            font-size: 20px;
+            text-align: center;
+        }
+        /* Responsive columns - one column layout (vertical) on small screens */
+        
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+        
+        .topnav-right {
+            float: right;
+        }
+        
+        .buttons {
+            border-radius: 50%;
+            background-color: #333;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="navbar">
+        <a th:href="@{/OglasiImi}">Početna</a>
+        <div class="topnav-right">
+            <div th:switch="${type}">
+                <div th:case="'unregistered'">
+                    <a th:href="@{/OglasiImi/prijava}">Prijavite se</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                    Registrujte se
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                        <div class="dropdown-content">
+                            <a th:href="@{/OglasiImi/registracijaKompanije}">Kao poslodavac</a
+                    >
+                    <a th:href="@{/OglasiImi/registracija}">Kao kandidat</a>
+                        </div>
+                    </div>
+                </div>
+                <div th:case="candidate">
+                    <a th:href="@{/OglasiImi/profileCandidate}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="employer">
+                    <a th:href="@{/OglasiImi/profileCompany}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="admin">
+                    <a th:href="@{/OglasiImi/AdmininstratorSpace}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="columns">
+
+        <div id="main" th:switch="${adminCase}">
+            <div id="candidate" th:case="candidate">
+                <h3>Kandidati</h3>
+
+                <form id="cinfo" method="POST" th:object="${userForm}" action="#" th:action="|/OglasiImi/AdmininstratorSpace/candidates/update/${userForm.getId()}|">
+                    <input type="hidden" th:field="*{id}">
+                    <label>firstname</label><input id="cfirstname" th:field="*{firstname}"><br/>
+                    <label>lastname</label><input id="clastname" th:field="*{lastname}"><br/>
+                    <label>dateOfBirth</label><input id="cdateOfBirth" th:field="*{dateOfBirth}"><br/>
+                    <label>email</label><input id="cemail" th:field="*{email}"><br/>
+                    <label>address</label><input id="caddress" th:field="*{address}"><br/>
+                    <label>password</label><input id="cpassword" th:field="*{password}"><br/>
+                    <label>telephoneNumber</label><input id="ctelephoneNumber" th:field="*{telephoneNumber}"><br/>
+                    <label>workingExperience</label><input id="cworkingExperience" th:field="*{workingExperience}"><br/>
+                    <button id="change" type="submit">IZMENI</button><br/>
+                </form>
+            </div>
+            <div id="employer" th:case="employer">
+
+                <h3>Poslodavci</h3>
+
+                <form id="cinfo" method="POST" th:object="${userForm}" action="#" th:action="|/OglasiImi/AdmininstratorSpace/employers/update/${userForm.getId()}|">
+                    <input type="hidden" th:field="*{id}">
+                    <label>companyName</label> <input id="ecompanyName " th:field="*{companyName} "><br/>
+                    <label>place</label><input id="eplace " th:field="*{place} "><br/>
+                    <label>industryBranch</label><input id="eindustryBranch " th:field="*{industryBranch} "><br/>
+                    <label>contactNumber</label><input id="econtactNumber " th:field="*{contactNumber} "><br/>
+                    <label>email</label><input id="eemail " th:field="*{email} "><br/>
+                    <label>postNumber</label><input id="epostNumber " th:field="*{postNumber} "><br/>
+                    <label>country</label><input id="ecountry " th:field="*{country} "><br/>
+                    <label>address</label><input id="eaddress " th:field="*{address} "><br/>
+                    <label>pib</label><input id="epib " th:field="*{pib} "><br/>
+                    <label>password</label><input id="epassword " th:field="*{password} "><br/>
+                    <label>linkToWebsite</label><input id="elinkToWebsite " th:field="*{linkToWebsite} "><br/>
+                    <button id="change " type="submit">IZMENI</button><br/>
+                </form>
+            </div>
+            <div th:case="* "></div>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>

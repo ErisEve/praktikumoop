@@ -12,6 +12,7 @@ import com.example.demo.applications.ApplicationService;
 import com.example.demo.customers.Candidate;
 import com.example.demo.customers.CandidateService;
 import com.example.demo.employers.Employer;
+import com.example.demo.employers.EmployerController;
 import com.example.demo.employers.EmployerService;
 import com.example.demo.administrator.Administrator;
 import com.example.demo.administrator.AdministratorService;
@@ -564,6 +565,32 @@ public class AppController {
         model.addAttribute("candidates", candidateService.getCandidate());
    return "admin";
    }
+   @GetMapping("/OglasiImi/AdmininstratorSpace/candidates/update/{id}")
+   public String updateCandidate(@PathVariable Long id, Model model){
+        model.addAttribute("type", type);
+        model.addAttribute("currentUser", currentUser);
+        adminCase = "candidate";
+        model.addAttribute("adminCase", adminCase);
+        Candidate userForm = new Candidate();
+        userForm.setId(id);
+        model.addAttribute("userForm",userForm);
+   return "admin2";
+   }
+   @PostMapping("/OglasiImi/AdmininstratorSpace/candidates/update/{id}")
+    public String updatedCandidate(@PathVariable Long id, @ModelAttribute("userForm") Candidate userForm, Model model){
+        Candidate cand = candidateService.getCandidateById(id);
+        if(!userForm.getFirstname().equals("")) cand.setFirstname(userForm.getFirstname());
+        if(!userForm.getLastname().equals("")) cand.setLastname(userForm.getLastname());
+        if(!userForm.getAddress().equals("")) cand.setAddress(userForm.getAddress());
+        if(!userForm.getEmail().equals("")) cand.setEmail(userForm.getEmail());
+        if(!userForm.getDateOfBirth().equals("")) cand.setDateOfBirth(userForm.getDateOfBirth());
+        if(!userForm.getPassword().equals("")) cand.setPassword(userForm.getPassword());
+        if(!userForm.getTelephoneNumber().equals("")) cand.setTelephoneNumber(userForm.getTelephoneNumber());
+        if(!userForm.getWorkingExperience().equals("")) cand.setWorkingExperience(userForm.getWorkingExperience());
+        candidateService.updateCandidate(cand);
+        // model.addAttribute("userForm",cand);
+        return "admin";
+    }
    @GetMapping("/OglasiImi/AdmininstratorSpace/employers")
    public String getAdminEmployersList(Model model){
         model.addAttribute("type", type);
@@ -573,6 +600,35 @@ public class AppController {
         model.addAttribute("employers", employerService.getEmployers());
        return "admin";
    }
+   @GetMapping("/OglasiImi/AdmininstratorSpace/employers/update/{id}")
+   public String updateEmployer(@PathVariable Long id, Model model){
+        model.addAttribute("type", type);
+        model.addAttribute("currentUser", currentUser);
+        adminCase = "employer";
+        model.addAttribute("adminCase", adminCase);
+        Employer userForm = new Employer();
+        userForm.setId(id);
+        model.addAttribute("userForm",userForm);
+   return "admin2";
+   }
+   @PostMapping("/OglasiImi/AdmininstratorSpace/employers/update/{id}")
+    public String updatedEmployer(@PathVariable Long id, @ModelAttribute("userForm") Employer userForm, Model model){
+        Employer emp = employerService.getEmployerById(id);
+        if(!userForm.getCompanyName().equals("")) emp.setCompanyName(userForm.getCompanyName());
+        if(!userForm.getIndustryBranch().equals("")) emp.setIndustryBranch(userForm.getIndustryBranch());
+        if(!userForm.getAddress().equals("")) emp.setAddress(userForm.getAddress());
+        if(!userForm.getEmail().equals("")) emp.setEmail(userForm.getEmail());
+        if(!userForm.getPlace().equals("")) emp.setPlace(userForm.getPlace());
+        if(!userForm.getPib().equals("")) emp.setPib(userForm.getPib());
+        if(!userForm.getLinkToWebsite().equals("")) emp.setLinkToWebsite(userForm.getLinkToWebsite());
+        if(!userForm.getCountry().equals("")) emp.setCountry(userForm.getCountry());
+        if(!userForm.getPostNumber().equals("")) emp.setPostNumber(userForm.getPostNumber());
+        if(!userForm.getPassword().equals("")) emp.setPassword(userForm.getPassword());
+        if(!userForm.getContactNumber().equals("")) emp.setContactNumber(userForm.getContactNumber());
+        employerService.updateEmployer(emp);
+        // model.addAttribute("userForm", currentUser);
+        return "admin";
+    }
    @GetMapping("/OglasiImi/AdmininstratorSpace/employers/delete/{id}")
    public String deleteEmployer(@PathVariable Long id, Model model){
         model.addAttribute("type", type);

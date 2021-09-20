@@ -372,7 +372,7 @@
                 <div class="column">
                     <div class="card">
                         <h1>
-                            <a th:href="@{/OglasiImi/profileCompany}" th:text="${emp.getCompanyName()}"></a>
+                            <a th:href="|/OglasiImi/poslodavac/${emp.getId()}|" th:text="${emp.getCompanyName()}"></a>
                         </h1>
                     </div>
                 </div>
