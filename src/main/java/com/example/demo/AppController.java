@@ -46,6 +46,8 @@ public class AppController {
     String isReported = "not";
     String personalized = "no";
     List<Long> comIds;
+    List<Long> nestedIds;
+    List<Map<String,String>> nested;
     @Autowired
     AdService adService;
     @Autowired
@@ -256,9 +258,20 @@ public class AppController {
     }
     private List<Map<String, String>> getComments(Long idAd){
         List<Map<String,String>> result = new ArrayList<Map<String,String>>();
+        nested = new ArrayList<Map<String,String>>();
         comIds = new ArrayList<Long>();
+        nestedIds = new ArrayList<Long>();
         List<Comment> coms = commentService.getCommentsByIdAd(idAd);
+        List<Comment> cons = new ArrayList<Comment>();
+        List<Comment> others = new ArrayList<Comment>();
         for (Comment comment : coms) {
+            if(comment.getIdResponse()==null) {
+                cons.add(comment);
+            }else{
+                others.add(comment);
+            }
+        }
+        for (Comment comment : cons) {
             Map<String, String> commentEntry = new HashMap<>();
             commentEntry.put("comment", comment.getComm());
             if(comment.getIdCandidate()!=null) {
@@ -268,6 +281,17 @@ public class AppController {
             }
             comIds.add(comment.getId());
             result.add(commentEntry);
+        }
+        for (Comment comment : others) {
+            Map<String, String> commentEntry = new HashMap<>();
+            commentEntry.put("comment", comment.getComm());
+            if(comment.getIdCandidate()!=null) {
+                commentEntry.put("name", candidateService.getCandidateById(comment.getIdCandidate()).getUsername());
+            }else{
+                commentEntry.put("name", employerService.getEmployerById(comment.getIdEmployer()).getUsername());
+            }
+            nestedIds.add(comment.getIdResponse());
+            nested.add(commentEntry);
         }
         Collections.reverse(comIds);
         Collections.reverse(result);
@@ -298,10 +322,13 @@ public class AppController {
         model.addAttribute("isReported", isReported);
         model.addAttribute("ad", ad);
         model.addAttribute("currentUser", currentUser);
-        System.out.println(type);
         model.addAttribute("type", type);
         model.addAttribute("coms", getComments(ad.getId()));
+        model.addAttribute("nested", nested);
         model.addAttribute("comIds",comIds);
+        model.addAttribute("nestedIds", nestedIds);
+        model.addAttribute("applications", applicationService.getApplicationsByAdId(ad.getId()));
+        
         return "oglas";
     }
 
@@ -316,6 +343,9 @@ public class AppController {
         commentService.addNewComment(newCom);
         model.addAttribute("coms", getComments(ad.getId()));
         model.addAttribute("comIds",comIds);
+        model.addAttribute("nestedIds", nestedIds);
+        model.addAttribute("nested", nested);
+        model.addAttribute("applications", applicationService.getApplicationsByAdId(ad.getId()));
         return "oglas";
     }
 

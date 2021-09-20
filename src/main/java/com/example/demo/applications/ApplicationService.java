@@ -21,7 +21,9 @@ public class ApplicationService {
     public List<Application> getApplicationsByCandidateId(Long id){
         return applicationRepository.getByIdClient(id);
     }
-
+    public List<Application> getApplicationsByAdId(Long id){
+        return applicationRepository.getByIdAd(id);
+    }
     public void addNewApplication(Application application) {
         if(applicationRepository.existsById(application.getId())) application.setId(lastid+1L);
         lastid=lastid+1L;

@@ -7,4 +7,5 @@ import java.util.List;
 @Repository
 public interface ApplicationRepository extends JpaRepository<Application, Long> {
     List<Application> getByIdClient(Long idClient);
+    List<Application> getByIdAd(Long idAd);
 }
