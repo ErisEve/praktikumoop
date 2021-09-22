@@ -5,141 +5,135 @@
 <head>
     <title>Konkursi</title>
     <meta charset="utf-8" />
-    
+
     <style>
-        body{
-    position: relative;
-    background-color:#d1cfcb;
-    
-}
-
-
-.navbar {
-    overflow: hidden;
-    background-color: #333;
-}
-
-.navbar a {
-    float: left;
-    font-size: 20px;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-.dropdown {
-
-    float: left;
-    overflow: hidden;
-}
-
-.dropdown .dropbtn {
-    font-family: Tahoma,serif;
-    font-variant: small-caps;
-    font-size: 20px;
-
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: inherit;
-    margin: 0;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: #579bbd;;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {
-    background-color: #579bbd;;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-#prijava{
-    position: relative;
-    top: -250px;
-    left: 10%;
-    font-size: 20px;
-    font-family: Tahoma,serif;
-    color: #ffffff;
-    
-    
-}
-
-#imeOglasa{
-    position: relative;
-    top: -230px;
-    left: 10%;
-    font-size: 50px;
-    font-family: Tahoma,serif;
-    color: #ffffff;
-   
-    
-}
-#poslodavac{
-    position: relative;
-    top: -210px;
-    left: 10%;
-    font-size: 20px;
-    font-family: Tahoma,serif;
-    color: #ffffff;
-    
-}
-
-#licniPodaci{
-    position: relative;
-   
-    left: 30px;
-    
-    
-}
-#podaciNaslov{
-    position: relative;
-    left: 40px;
-    font-size: 30px;
-    color: #454545;
-    text-align: center;
-    margin-right: 90px;
-    
-}
-#hr1{
-    position: relative;
-    left: -50px;
-    width: 90%;
-    border-top: 1px dotted #454545;
-}
-#licniPodaci{
-    color: #454545;
-    font-weight:bold;
-    position: relative;
-    left: 30px;
-    font-size: 20px;
-    width: 100%;
-    height: 800px;
-   
-}
-/*
+        body {
+            position: relative;
+            background-color: #d1cfcb;
+        }
+        
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+        
+        .navbar a {
+            float: left;
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        
+        .dropdown .dropbtn {
+            font-family: Tahoma, serif;
+            font-variant: small-caps;
+            font-size: 20px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            margin: 0;
+        }
+        
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #579bbd;
+            ;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #579bbd;
+            ;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        #prijava {
+            position: relative;
+            top: -250px;
+            left: 10%;
+            font-size: 20px;
+            font-family: Tahoma, serif;
+            color: #ffffff;
+        }
+        
+        #imeOglasa {
+            position: relative;
+            top: -230px;
+            left: 10%;
+            font-size: 50px;
+            font-family: Tahoma, serif;
+            color: #ffffff;
+        }
+        
+        #poslodavac {
+            position: relative;
+            top: -210px;
+            left: 10%;
+            font-size: 20px;
+            font-family: Tahoma, serif;
+            color: #ffffff;
+        }
+        
+        #licniPodaci {
+            position: relative;
+            left: 30px;
+        }
+        
+        #podaciNaslov {
+            position: relative;
+            left: 40px;
+            font-size: 30px;
+            color: #454545;
+            text-align: center;
+            margin-right: 90px;
+        }
+        
+        #hr1 {
+            position: relative;
+            left: -50px;
+            width: 90%;
+            border-top: 1px dotted #454545;
+        }
+        
+        #licniPodaci {
+            color: #454545;
+            font-weight: bold;
+            position: relative;
+            left: 30px;
+            font-size: 20px;
+            width: 100%;
+            height: 800px;
+        }
+        /*
 #input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     
@@ -163,38 +157,38 @@ input[type=email]:focus{
   background-color: #e3e1dc;
 }
 */
-
-#dokumenti{
-    position: relative;
-    top: -250px;
-    left: 30px;
-    width: 100%;
-    height: 300px;
-}
-
-#dokumentiNaslov{
-    position: relative;
-    left: 40px;
-    font-size: 30px;
-    color: #454545;
-    font-weight: bold;
-    
-}
-#hr2{
-    position: relative;
-    left: -50px;
-    width: 90%;
-    border-top: 1px dotted #454545;
-    
-}
-#konkurisi{
-    position: relative;
-    top: -220px;
-    left: 70px;
-    
-}
-#status{
-    /*
+        
+        #dokumenti {
+            position: relative;
+            top: -250px;
+            left: 30px;
+            width: 100%;
+            height: 300px;
+        }
+        
+        #dokumentiNaslov {
+            position: relative;
+            left: 40px;
+            font-size: 30px;
+            color: #454545;
+            font-weight: bold;
+        }
+        
+        #hr2 {
+            position: relative;
+            left: -50px;
+            width: 90%;
+            border-top: 1px dotted #454545;
+        }
+        
+        #konkurisi {
+            position: relative;
+            top: -220px;
+            left: 70px;
+        }
+        
+        #status {
+            /*
     position: relative;
     left: 600px;
     top: -150px;
@@ -202,215 +196,207 @@ input[type=email]:focus{
     height: 20px;
     text-align: center;
         */
-            
-    margin: auto;
-    width: 300px;
-    margin-top:-200px;
-    padding: 10px;
-    
-   
-    
-}
-#status.success{
-    background-color: rgb(211,250,153);
-    animation: status 4s ease forwards;
-}
-#status.error{
-    background-color: rgb(250,129,92);
-    color: white;
-    animation: status 3s ease forwards;
-}
-
-@keyframes status{
-    
-    0%{
-        opacity:1;
-        pointer-events: all;
-    }
-      
-    90%{
-        opacity:1;
-        pointer-events: all;
-    }
-      
-    100%{
-        opacity:0;
-        pointer-events: none;
-    }
-}
- body 
-{
-    height: 1200px;
-    font-size: 20px;
-    margin: 0;
-    padding: 0;
-    font-family: Tahoma,serif;
-    font-variant: small-caps;
-    background-color:  #dee5ed;
-    background-image: url("job.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 150%;
-    color: #364b63;
-    color: white;
-    text-align:center;
-}
-h2
-{
-    font-size: 40px;
-    text-align: center;
-    color: white;
-}
-form 
-{
-    border: 3px solid #f1f1f1;
-    width: 1100px;
-    margin: auto;
-    border-radius: 30px;
-    background-color: #c1cdd7;
-    margin-top: 150px;
-    height: 900px;
-    font-weight: bold;
-    
-}
-
-input {
-  width: 60%;
-  height: 40px;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 50px;
-  box-sizing: border-box;
- 
-}
-#db
-{
-  width: 60%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 50px;
-  box-sizing: border-box;
-  float: right;
-  height: 40px;
-  margin-right: 50px;
-}
-.lbl
-{
-    display: inline-block;
-    width: 300px;
-    height: 40px;
-    color: red;
-    float: left;
-    margin-top: 10px;
-    margin-left: 50px;
-    margin-right: -20px;
-    text-align: left;
-}
-
-button {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  cursor: pointer;
-  width: 90%;
-  height: 40px;
-  border-radius: 50px;
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  width: 1100px;
-  margin-left:-150px;
-}
-
-
-button:hover {
-  opacity:1;
-  text-decoration:none;
-}
-.infile
-{
-    width: 300px;
-    float: right;
-    margin-right: 100px;
-    font-size: 15px;
-    border: none;
-}
+            margin: auto;
+            width: 300px;
+            margin-top: -200px;
+            padding: 10px;
+        }
+        
+        #status.success {
+            background-color: rgb(211, 250, 153);
+            animation: status 4s ease forwards;
+        }
+        
+        #status.error {
+            background-color: rgb(250, 129, 92);
+            color: white;
+            animation: status 3s ease forwards;
+        }
+        
+        @keyframes status {
+            0% {
+                opacity: 1;
+                pointer-events: all;
+            }
+            90% {
+                opacity: 1;
+                pointer-events: all;
+            }
+            100% {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+        
+        body {
+            height: 1200px;
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma, serif;
+            font-variant: small-caps;
+            background-color: #dee5ed;
+            background-image: url([[@{/images/job.jpg}]]);
+            background-repeat: no-repeat;
+            background-size: 100% 150%;
+            color: #364b63;
+            color: white;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 40px;
+            text-align: center;
+            color: white;
+        }
+        
+        form {
+            border: 3px solid #f1f1f1;
+            width: 1100px;
+            margin: auto;
+            border-radius: 30px;
+            background-color: #c1cdd7;
+            margin-top: 150px;
+            height: 900px;
+            font-weight: bold;
+        }
+        
+        input {
+            width: 60%;
+            height: 40px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 50px;
+            box-sizing: border-box;
+        }
+        
+        #db {
+            width: 60%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 50px;
+            box-sizing: border-box;
+            float: right;
+            height: 40px;
+            margin-right: 50px;
+        }
+        
+        .lbl {
+            display: inline-block;
+            width: 300px;
+            height: 40px;
+            color: red;
+            float: left;
+            margin-top: 10px;
+            margin-left: 50px;
+            margin-right: -20px;
+            text-align: left;
+        }
+        
+        button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 90%;
+            height: 40px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            width: 1100px;
+            margin-left: -150px;
+        }
+        
+        button:hover {
+            opacity: 1;
+            text-decoration: none;
+        }
+        
+        .infile {
+            width: 300px;
+            float: right;
+            margin-right: 100px;
+            font-size: 15px;
+            border: none;
+        }
     </style>
 </head>
 
 <body>
 
-        <!--Prvi deo-->
-        <div class="navbar">
-            <a th:href="@{/OglasiImi}">Početna</a>
-            <div class="topnav-right">
-                <div th:switch="${type}">
-                    <div th:case="'unregistered'">
-                        <a th:href="@{/OglasiImi/prijava}">Prijavite se</a>
-                        <div class="dropdown">
-                            <button class="dropbtn">
+    <!--Prvi deo-->
+    <div class="navbar">
+        <a th:href="@{/OglasiImi}">Početna</a>
+        <div class="topnav-right">
+            <div th:switch="${type}">
+                <div th:case="'unregistered'">
+                    <a th:href="@{/OglasiImi/prijava}">Prijavite se</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">
                     Registrujte se
                     <i class="fa fa-caret-down"></i>
                   </button>
-                            <div class="dropdown-content">
-                                <a th:href="@{/OglasiImi/registracijaKompanije}">Kao poslodavac</a
+                        <div class="dropdown-content">
+                            <a th:href="@{/OglasiImi/registracijaKompanije}">Kao poslodavac</a
                     >
                     <a th:href="@{/OglasiImi/registracija}">Kao kandidat</a>
-                            </div>
                         </div>
                     </div>
-                    <div th:case="'candidate'">
-                        <a th:href="@{/OglasiImi/profileCandidate}" th:text="${currentUser.getUsername()}"></a>
-                        <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
-                    </div>
-                    <div th:case="'employer'">
-                        <a th:href="@{/OglasiImi/profileCompany}" th:text="${currentUser.getUsername()}"></a>
-                        <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
-                    </div>
-                    <div th:case="'admin'">
-                        <a th:href="@{/OglasiImi/AdmininstratorSpace}" th:text="${currentUser.getUsername()}"></a>
-                        <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
-                    </div>
+                </div>
+                <div th:case="'candidate'">
+                    <a th:href="@{/OglasiImi/profileCandidate}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="'employer'">
+                    <a th:href="@{/OglasiImi/profileCompany}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
+                </div>
+                <div th:case="'admin'">
+                    <a th:href="@{/OglasiImi/AdmininstratorSpace}" th:text="${currentUser.getUsername()}"></a>
+                    <a th:href="@{/OglasiImi/prijava}">Odjavi me</a>
                 </div>
             </div>
         </div>
-        <div id="prijava">Prijava na konkurs</div>
+    </div>
+    <div id="prijava">Prijava na konkurs</div>
 
-        <div id="prijavaPocetak">
+    <div id="prijavaPocetak">
 
-            <div id="imeOglasa">
-                Naziv Oglasa
-            </div>
-            <div id="poslodavac">
-                Poslodavac
-
-            </div>
+        <div id="imeOglasa">
+            Naziv Oglasa
+        </div>
+        <div id="poslodavac">
+            Poslodavac
 
         </div>
 
-        <!--Podaci-->
+    </div>
 
-        <form action="https://formspree.io/f/mvodqnrq" method="POST" id="forma" th:object="${applicationForm}" th:action="|/OglasiImi/poslovi/oglas/konkurisi/${applicationForm.getIdAd()}|">
-            <div id="licniPodaci">
-                <h2>Lični podaci</h2>
-                <label class="lbl" for="fname">Zasto sam ja dobar/a za ovaj posao: </label><br>
-                <input type="text" th:field="*{experience}" id="fname" required><br>
-                <label class="lbl" for="fname">Moja edukacija i dosadasnje iskustvo: </label><br>
-                <input type="text" th:field="*{education}" id="flastname" name="edkuacija" required><br>
-                <input type="hidden" th:field="*{idAd}">
-                <input type="hidden" th:field="*{idClient}">
-            </div>
+    <!--Podaci-->
+
+    <form action="https://formspree.io/f/mvodqnrq" method="POST" id="forma" th:object="${applicationForm}" th:action="|/OglasiImi/poslovi/oglas/konkurisi/${applicationForm.getIdAd()}|">
+        <div id="licniPodaci">
+            <h2>Lični podaci</h2>
+            <label class="lbl" for="fname">Zasto sam ja dobar/a za ovaj posao: </label><br>
+            <input type="text" th:field="*{experience}" id="fname" required><br>
+            <label class="lbl" for="fname">Moja edukacija i dosadasnje iskustvo: </label><br>
+            <input type="text" th:field="*{education}" id="flastname" name="edkuacija" required><br>
+            <input type="hidden" th:field="*{idAd}">
+            <input type="hidden" th:field="*{idClient}">
+        </div>
 
 
-            <div id="konkurisi">
+        <div id="konkurisi">
 
-                <button type="submit" id="b1">KONKURIŠI</button>
+            <button type="submit" id="b1">KONKURIŠI</button>
 
-            </div>
-        </form>
+        </div>
+    </form>
 
     </div>
 

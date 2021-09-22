@@ -469,7 +469,7 @@ body
 
         </style>
     </head>
-<body class="w3-theme-l5"  style="background-image:url('job.jpg');font-family: Tahoma,serif;
+<body class="w3-theme-l5"  style="background-image:url([[@{/images/job.jpg}]]);font-family: Tahoma,serif;
     font-variant: small-caps;
     background-color:  #dee5ed;
     background-repeat: no-repeat;

@@ -1,175 +1,175 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <title>Registracija</title>
+    <title>Registracija</title>
     <meta charset="utf-8" />
-  <style>
-      body 
-{
-    height: 1200px;
-    font-size: 20px;
-    margin: 0;
-    padding: 0;
-    font-family: Tahoma,serif;
-    font-variant: small-caps;
-    background-color:  #dee5ed;
-    background-image: url("job.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 150%;
-    color: #364b63;
-    color: white;
-    text-align:center;
-}
-h2
-{
-    font-size: 40px;
-}
-form 
-{
-    border: 3px solid #f1f1f1;
-    width: 1100px;
-    margin: auto;
-    border-radius: 30px;
-    background-color: #c1cdd7;
-    margin-top: 150px;
-    height: 930px;
-    font-weight: bold;
-    
-}
-
-input[type=text], input[type=password] {
-  width: 60%;
-  height: 40px;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 50px;
-  box-sizing: border-box;
- 
-}
-#db
-{
-  width: 60%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 50px;
-  box-sizing: border-box;
-  float: right;
-  height: 40px;
-  margin-right: 50px;
-}
-.lbl
-{
-    display: inline-block;
-    width: 300px;
-    height: 40px;
-    color: red;
-    float: left;
-    margin-top: 10px;
-    margin-left: 50px;
-    margin-right: -20px;
-    text-align: left;
-}
-
-button {
-  background-color: #f44336;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 90%;
-  border-radius: 50px;
-  
-}
-
-button:hover {
-  opacity:1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
-  text-decoration:none;
-  color:whitesmoke;
-}
-
-/* Add padding to container elements */
-.container {
-  padding: 16px;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-     width: 100%;
-  }
-}
-
-
-  </style>
+    <style>
+        body {
+            height: 1200px;
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma, serif;
+            font-variant: small-caps;
+            background-color: #dee5ed;
+            background-image: url([[@{/images/job.jpg}]]);
+            background-repeat: no-repeat;
+            background-size: 100% 150%;
+            color: #364b63;
+            color: white;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 40px;
+        }
+        
+        form {
+            border: 3px solid #f1f1f1;
+            width: 1100px;
+            margin: auto;
+            border-radius: 30px;
+            background-color: #c1cdd7;
+            margin-top: 150px;
+            height: 930px;
+            font-weight: bold;
+        }
+        
+        input[type=text],
+        input[type=password] {
+            width: 60%;
+            height: 40px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 50px;
+            box-sizing: border-box;
+        }
+        
+        #db {
+            width: 60%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 50px;
+            box-sizing: border-box;
+            float: right;
+            height: 40px;
+            margin-right: 50px;
+        }
+        
+        .lbl {
+            display: inline-block;
+            width: 300px;
+            height: 40px;
+            color: red;
+            float: left;
+            margin-top: 10px;
+            margin-left: 50px;
+            margin-right: -20px;
+            text-align: left;
+        }
+        
+        button {
+            background-color: #f44336;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 90%;
+            border-radius: 50px;
+        }
+        
+        button:hover {
+            opacity: 1;
+        }
+        /* Extra styles for the cancel button */
+        
+        .cancelbtn {
+            padding: 14px 20px;
+            background-color: #f44336;
+        }
+        /* Float cancel and signup buttons and add an equal width */
+        
+        .cancelbtn,
+        .signupbtn {
+            float: left;
+            width: 50%;
+            text-decoration: none;
+            color: whitesmoke;
+        }
+        /* Add padding to container elements */
+        
+        .container {
+            padding: 16px;
+        }
+        /* Clear floats */
+        
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        /* Change styles for cancel button and signup button on extra small screens */
+        
+        @media screen and (max-width: 300px) {
+            .cancelbtn,
+            .signupbtn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<form method="post" action="/action_page.php" style="border:1px solid #ccc" th:object="${userForm}" th:action="@{/OglasiImi/registracijaKompanije}">
-  <div class="container">
-    <h1>Registrujte se</h1>
-    <p>Molimo popunite formu da kreirate nalog.</p>
-    <label class="lbl" for="ime">Ime kompanije</label>
-    <input type="text" th:field="*{companyName}" placeholder="Uneti ime kompanije" name="ime" required><br>
-    <label class="lbl" for="contact">Kontakt</label>
-    <input type="text" th:field="*{contactNumber}" placeholder="Uneti broj telefona" name="contact" required><br>
-    <label class="lbl" for="email">Email</label>
-    <input type="text" th:field="*{email}" placeholder="Uneti Email" name="email" required><br>
-    <label class="lbl" for="industry_branch">Branša</label>
-    <input type="text" th:field="*{industryBranch}" placeholder="Uneti branšu" name="industry_branch" required><br>
-    <label class="lbl" for="weblink">Website</label>
-    <input type="text" th:field="*{linkToWebsite}" placeholder="Uneti vebsajt" name="weblink" required><br>
-    <label class="lbl" for="pib">Pib</label>
-    <input type="text" th:field="*{pib}" placeholder="Uneti pib" name="pib" required><br>
-    <label class="lbl" for="address">Adresa</label>
-    <input type="text" th:field="*{address}" placeholder="Uneti adresu" name="address" required><br>
-    <label class="lbl" for="place">Mesto</label>
-    <input type="text" th:field="*{place}" placeholder="Uneti mesto" name="place" required><br>
-    <label class="lbl" for="post_number">Poštanski broj</label>
-    <input type="text" th:field="*{postNumber}" placeholder="Uneti poštanski broj" name="post_number" required><br>
-    <label class="lbl" for="country">Zemlja</label>
-    <input type="text" th:field="*{country}" placeholder="Uneti korisni&ccaron;ko ime" name="country" required><br>
-    <label class="lbl" for="username">Korisničko ime</label>
-    <input type="text" th:field="*{username}" placeholder="Uneti korisni&ccaron;ko ime" name="username" required><br>
-    <label class="lbl" for="psw">Lozinka</label>
-    <input type="password" th:field="*{password}" placeholder="Uneti lozinku" name="psw" required><br>
-    <label class="lbl" for="psw-repeat">Ponoviti lozinku</label>
-    <input type="password" placeholder="Ponoviti lozinku" name="psw-repeat" required><br>
-    <label>
+    <form method="post" action="/action_page.php" style="border:1px solid #ccc" th:object="${userForm}" th:action="@{/OglasiImi/registracijaKompanije}">
+        <div class="container">
+            <h1>Registrujte se</h1>
+            <p>Molimo popunite formu da kreirate nalog.</p>
+            <label class="lbl" for="ime">Ime kompanije</label>
+            <input type="text" th:field="*{companyName}" placeholder="Uneti ime kompanije" name="ime" required><br>
+            <label class="lbl" for="contact">Kontakt</label>
+            <input type="text" th:field="*{contactNumber}" placeholder="Uneti broj telefona" name="contact" required><br>
+            <label class="lbl" for="email">Email</label>
+            <input type="text" th:field="*{email}" placeholder="Uneti Email" name="email" required><br>
+            <label class="lbl" for="industry_branch">Branša</label>
+            <input type="text" th:field="*{industryBranch}" placeholder="Uneti branšu" name="industry_branch" required><br>
+            <label class="lbl" for="weblink">Website</label>
+            <input type="text" th:field="*{linkToWebsite}" placeholder="Uneti vebsajt" name="weblink" required><br>
+            <label class="lbl" for="pib">Pib</label>
+            <input type="text" th:field="*{pib}" placeholder="Uneti pib" name="pib" required><br>
+            <label class="lbl" for="address">Adresa</label>
+            <input type="text" th:field="*{address}" placeholder="Uneti adresu" name="address" required><br>
+            <label class="lbl" for="place">Mesto</label>
+            <input type="text" th:field="*{place}" placeholder="Uneti mesto" name="place" required><br>
+            <label class="lbl" for="post_number">Poštanski broj</label>
+            <input type="text" th:field="*{postNumber}" placeholder="Uneti poštanski broj" name="post_number" required><br>
+            <label class="lbl" for="country">Zemlja</label>
+            <input type="text" th:field="*{country}" placeholder="Uneti korisni&ccaron;ko ime" name="country" required><br>
+            <label class="lbl" for="username">Korisničko ime</label>
+            <input type="text" th:field="*{username}" placeholder="Uneti korisni&ccaron;ko ime" name="username" required><br>
+            <label class="lbl" for="psw">Lozinka</label>
+            <input type="password" th:field="*{password}" placeholder="Uneti lozinku" name="psw" required><br>
+            <label class="lbl" for="psw-repeat">Ponoviti lozinku</label>
+            <input type="password" placeholder="Ponoviti lozinku" name="psw-repeat" required><br>
+            <label>
       <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Zapamti me
     </label>
-    <label>
+            <label>
       <input type="checkbox" th:field="*{emailme}" checked="checked" name="emailme" style="margin-bottom:15px"> Želim da primam obaveštenja putem email-a
     </label>
-    <div class="clearfix">
-      <button type="button" class="cancelbtn" ><a th:href="@{/OglasiImi}" style="
+            <div class="clearfix">
+                <button type="button" class="cancelbtn"><a th:href="@{/OglasiImi}" style="
                   text-decoration: none;     color: whitesmoke;">POČETNA STRANA</a></button>
-      <button type="submit" class="signupbtn"><a href="@{/OglasiImi/successful}" style="
+                <button type="submit" class="signupbtn"><a href="@{/OglasiImi/successful}" style="
                   text-decoration: none;     color: whitesmoke;">Registruj se</a></button>
-    </div>
-  </div>
-</form>
+            </div>
+        </div>
+    </form>
 </body>
+
 </html>

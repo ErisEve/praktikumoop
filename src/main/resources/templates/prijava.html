@@ -3,113 +3,113 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Prijava</title>
     <style>
-body 
-{
-    height: 500px;
-    font-size: 20px;
-    margin: 0;
-    padding: 0;
-    font-family: Tahoma,serif;
-    font-variant: small-caps;
-    background-color:  #dee5ed;
-    background-image: url("job.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 150%;
-    color: #364b63;
-    color: white;
-    text-align: center;
-}
-h2
-{
-    font-size: 40px;
-}
-form 
-{
-    border: 3px solid #f1f1f1;
-    width: 900px;
-    margin: auto;
-    border-radius: 30px;
-    background-color: #c1cdd7;
-    margin-top: 130px;
-    height: 330px;
-    font-weight: bold;
-}
-
-input[type=text], input[type=password] {
-  width: 90%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 50px;
-  box-sizing: border-box;
-}
-
-button {
-  background-color: #f44336;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 90%;
-  border-radius: 50px;
-  
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-  margin-left: 50px;
-  float: left;
-}
-
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
-
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
-
-.container {
-  padding: 16px;
-}
-
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-a
-{
-    text-decoration: none;
-    color: #f44336;
-    float: right;
-    margin-right: 50px;
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
+        body {
+            height: 500px;
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma, serif;
+            font-variant: small-caps;
+            background-color: #dee5ed;
+            background-image: url([[@{/images/job.jpg}]]);
+            background-repeat: no-repeat;
+            background-size: 100% 150%;
+            color: #364b63;
+            color: white;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 40px;
+        }
+        
+        form {
+            border: 3px solid #f1f1f1;
+            width: 900px;
+            margin: auto;
+            border-radius: 30px;
+            background-color: #c1cdd7;
+            margin-top: 130px;
+            height: 330px;
+            font-weight: bold;
+        }
+        
+        input[type=text],
+        input[type=password] {
+            width: 90%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 50px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #f44336;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 90%;
+            border-radius: 50px;
+        }
+        
+        button:hover {
+            opacity: 0.8;
+        }
+        
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+            margin-left: 50px;
+            float: left;
+        }
+        
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+        
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+        
+        .container {
+            padding: 16px;
+        }
+        
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #f44336;
+            float: right;
+            margin-right: 50px;
+        }
+        /* Change styles for span and cancel button on extra small screens */
+        
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+            .cancelbtn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
+
 <body>
     <h2>Prijavite se</h2>
     <form th:action="@{/OglasiImi}" method="get">
@@ -118,7 +118,7 @@ a
 
             <input id="usrname" type="text" placeholder="Uneti Email" name="usrname" required><br>
 
-<label for="psw"><b>Lozinka</b></label><br>
+            <label for="psw"><b>Lozinka</b></label><br>
 
             <input id="pswrd" type="password" placeholder="Uneti lozinku" name="pswrd" required><br>
 
@@ -126,10 +126,10 @@ a
             <label>
       <input type="checkbox" checked="checked" name="remember"> Zapamti me<br>
          </label>
-<button type="button" class="cancelbtn"><a th:href="@{/OglasiImi}" style="text-decoration: none;color:whitesmoke;">POCETNA STRANA</a></button>
+            <button type="button" class="cancelbtn"><a th:href="@{/OglasiImi}" style="text-decoration: none;color:whitesmoke;">POCETNA STRANA</a></button>
             <span class="psw"> <a href="#">Zaboravljena lozinka?</a></span>
         </div>
-      </form>
+    </form>
 </body>
 
 </html>

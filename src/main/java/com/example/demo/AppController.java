@@ -411,15 +411,15 @@ public class AppController {
         return "profilKand";
     }
 
-    @GetMapping("/OglasiImi/changeInfo")
-    public String changeAccInfo(Model model){
-        model.addAttribute("type", type);
-        model.addAttribute("currentUser", currentUser);
-        model.addAttribute("userForm", new Candidate());
-        System.out.println(">>>>>>>>>>>>okay the hell?>>>>>>>>>>>>>>>>");
-        System.out.println(currentUser);
-        return "profilKandChange";
-    }
+        @GetMapping("/OglasiImi/changeInfo")
+        public String changeAccInfo(Model model){
+            model.addAttribute("type", type);
+            model.addAttribute("currentUser", currentUser);
+            model.addAttribute("userForm", new Candidate());
+            System.out.println(">>>>>>>>>>>>okay the hell?>>>>>>>>>>>>>>>>");
+            System.out.println(currentUser);
+            return "profilKandChange";
+        }
 
     @PostMapping("/OglasiImi/changeInfo")
     public String accountInfoSaved(@ModelAttribute("userForm") Candidate userForm, Model model){

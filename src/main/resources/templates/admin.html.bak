@@ -17,7 +17,7 @@
 body
 {
     width: 1520px;
-    background-image: url("job.jpg");
+    background-image: url([[@{/images/job.jpg}]]);
     background-repeat: no-repeat;
     background-size: 100% 150%;
      

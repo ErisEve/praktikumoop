@@ -336,7 +336,6 @@
         <div id="oglasi" th:each="ad : ${keyword}">
             <div id="opisOglasa">
                 <div id="naslov" style="height:20px;">
-                    <p id="nazivPoslodavca">Naziv poslodavca</p>
                     <a th:href="|/OglasiImi/poslovi/oglas/${ad.getId()}|">
                         <p id="nazivOglasa" th:text="${ad.getDescription()}"></p>
                     </a>
